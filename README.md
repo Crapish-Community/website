@@ -1,4 +1,4 @@
-# <img src="https://ratted.tech/images/logos/small.png" width="30"> **Tadah** Website (updated version of [web-old](https://github.com/tadah-foss/web-old))
+# <img src="https://crapish.fun/images/logos/small.png" width="30"> **Crapish** Website (updated version of [web-trunk](https://gitlab.com/tadah/web-trunk))
 The tartar sauce spaghetti code website of old legos.
 
 # Setting It Up

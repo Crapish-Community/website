@@ -183,7 +183,7 @@
                         <div class="collapse" id="game-{{ $server->uuid }}">
                             <div class="col px-0 mb-3">
                                 <div class="card card-body d-flex flex-column shadow-sm h-100">
-                                    <a href="{{ route('servers.server', $server->uuid) }}"><img class="card-img-top rounded" style="max-height: 250px;" data-tadah-thumbnail-id="{{ $server->uuid }}" data-tadah-thumbnail-type="place-thumbnail" src="{{ asset('images/thumbnail/blank.png') }}" alt="{{$server->name}} thumbnail"></a>
+                                    <a href="{{ route('servers.server', $server->uuid) }}"><img class="card-img-top rounded" style="max-height: 250px;" data-tadah-thumbnail-id="{{ $server->uuid }}" data-tadah-thumbnail-type="place-thumbnail" src="{{ asset('images/thumbnail/blank_place.png') }}" alt="{{$server->name}} thumbnail"></a>
                                     <hr>
                                     <div class="d-flex justify-content-between">
                                         <div class="card-title mb-0 h-auto">

@@ -66,7 +66,7 @@ services:
           database__connection__user: ${DB_USERNAME}
           database__connection__password: ${DB_PASSWORD}
           database__connection__database: ghost
-          url: http://blog.ratted.tech
+          url: http://blog.crapish.fun
           NODE_ENV: production
         ports:
           - 127.0.0.1:2368:2368

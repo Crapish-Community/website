@@ -202,7 +202,7 @@
             type: "GET",
             url: "/admin/robloxxmldata/" + $('#robloxid').val() + "/" + $('#robloxversion').val(),
             success: function (data){
-                $("#xml").html(data.replaceAll("http://www.roblox.com/asset", "http://ratted.tech/asset").replaceAll("class=\"Accessory\"", "class=\"Hat\""));
+                $("#xml").html(data.replaceAll("http://www.roblox.com/asset", "http://crapish.fun/asset").replaceAll("class=\"Accessory\"", "class=\"Hat\""));
             }
         });
     });

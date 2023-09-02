@@ -38,7 +38,7 @@ class TestController extends Controller
             'ClientPort' => 0,
             'MachineAddress' => $request->ip ?? 'localhost',
             'ServerPort' => intval($request->port) ?? 53640,
-            'PingUrl' => 'http://api.ratted.tech/ping',
+            'PingUrl' => 'http://api.crapish.fun/ping',
             'PingInterval' => 120,
             'UserName' => $user->username,
             'SeleniumTestMode' => false,
@@ -47,7 +47,7 @@ class TestController extends Controller
             'ClientTicket' => '',
             'GameId' => Str::uuid()->toString(),
             'PlaceId' => intval($request->placeId) ?? 1818,
-            'BaseUrl' => 'http://www.ratted.tech/',
+            'BaseUrl' => 'http://www.crapish.fun/',
             'ChatStyle' => 'ClassicAndBubble',
             'VendorId' => 0,
             'ScreenshotInfo' => '',
@@ -70,7 +70,7 @@ class TestController extends Controller
             'FollowUserId' => 0
         ];
 
-        $joinscript['CharacterAppearance'] = 'https://ratted.tech/Asset/CharacterFetch.ashx?userId=' . $joinscript['UserId'];
+        $joinscript['CharacterAppearance'] = 'https://crapish.fun/Asset/CharacterFetch.ashx?userId=' . $joinscript['UserId'];
         $joinscript['characterAppearanceId'] = $joinscript['UserId'];
 
         $response = Response::make(ScriptSigner::instance()->sign(json_encode($joinscript, JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK), 'new'));

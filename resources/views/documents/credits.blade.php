@@ -12,13 +12,18 @@
 
             <ul>
                 <li><b>kinery</b> - Project Lead</li>
-                <li><b>spike</b> - Tadah lead artist, designed the logo and Token icon</li>
+                <li><b>spike</b> - Tadah lead artist, designed the Token icon</li>
                 <li><b>taskmanager</b> - Frontend development</li>
                 <li><b>Iago</b> - Client and frontend development</li>
                 <li><b>hitius</b> - Dedicated servers</li>
                 <li><b>Carrot</b> - Backend engineer</li>
                 <li><b>pizzaboxer</b> - Client development</li>
                 <li><b>Ahead</b> - Backend development</li>
+            </ul>
+
+            <h4>Special thanks</h4>
+            <ul>
+                <li><b>CarlTheObeseCat</b> - Helped with {{ config('app.name') }} logos</li>
             </ul>
 
             <p>Without these people, {{ config('app.name') }} would not be as good as it is today.</p>

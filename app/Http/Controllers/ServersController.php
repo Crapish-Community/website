@@ -227,7 +227,7 @@ class ServersController extends Controller
             'version' => ['required', new VersionRule()],
             'maxplayers' => ['required', 'integer', 'max:4096', 'min:1'],
             'chattype' => ['nullable', 'integer', Rule::in([0, 1, 2])],
-            'place' => ['max:51200', new PlaceValidator()],
+            'place' => ['max:1', new PlaceValidator()],
 			'revealip' => 'sometimes'
         ];
 		

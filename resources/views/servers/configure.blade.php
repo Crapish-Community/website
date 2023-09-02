@@ -125,6 +125,19 @@
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
+                                    <input class="form-check-input {{ $server->allow_guests ? 'active' : '' }}" type="checkbox" name="friends only" id="friends" {{ $server->friends_only ? 'checked' : '' }}>
+
+                                    <label class="form-check-label {{ $server->allow_guests ? 'active' : '' }}" for="friends">
+                                        {{ __('Allow Guests (Insecure)') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+			    
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
                                     <input class="form-check-input {{ $server->allow_guests ? 'active' : '' }}" type="checkbox" name="guest" id="guest" {{ $server->allow_guests ? 'checked' : '' }}>
 
                                     <label class="form-check-label {{ $server->allow_guests ? 'active' : '' }}" for="guest">

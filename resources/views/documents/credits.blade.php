@@ -21,7 +21,7 @@
                 <li><b>Ahead</b> - Backend development</li>
             </ul>
 
-            <h4>Special thanks</h4>
+            <p>Special thanks:</p>
             <ul>
                 <li><b>CarlTheObeseCat</b> - Created logos "inspired" from Kapish</li>
             </ul>

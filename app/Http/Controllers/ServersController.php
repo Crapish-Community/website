@@ -137,9 +137,9 @@ class ServersController extends Controller
             'loopbackip' => ['nullable', 'string', 'ipv4'],
             'port' => ['required', 'integer'],
             'version' => ['required', new VersionRule()],
-            'maxplayers' => ['required', 'integer', 'max:4096', 'min:1'],
+            'maxplayers' => ['required', 'integer', 'max:50', 'min:1'],
             'chattype' => ['nullable', 'integer', Rule::in([0, 1, 2])],
-            'place' => ['required', 'max:51200', new PlaceValidator()]
+            'place' => ['required', 'max:1', new PlaceValidator()]
         ]);
 
         $server = Server::create([
@@ -225,7 +225,7 @@ class ServersController extends Controller
             'name' => ['required', 'string', 'max:40'],
             'description' => ['nullable', 'string', 'max:250'],
             'version' => ['required', new VersionRule()],
-            'maxplayers' => ['required', 'integer', 'max:4096', 'min:1'],
+            'maxplayers' => ['required', 'integer', 'max:50', 'min:1'],
             'chattype' => ['nullable', 'integer', Rule::in([0, 1, 2])],
             'place' => ['max:1', new PlaceValidator()],
 			'revealip' => 'sometimes'

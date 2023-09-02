@@ -55,7 +55,7 @@
             <div class="row p-2">
                 <div class="d-inline-block position-relative h-100">
                     <a href="/users/${id}/profile">
-                        <img style="max-height: 6rem" class="headshot-bg position-relative rounded-circle border mx-1" class="position-relative rounded-circle border mx-1" data-tadah-thumbnail-id="${id}" data-tadah-thumbnail-type="user-headshot">
+                        <img style="max-height: 6rem" class="headshot-bg position-relative rounded-circle border mx-1" class="position-relative rounded-circle border mx-1" data-tadah-thumbnail-id="${id}" data-tadah-thumbnail-type="user-headshot" src="{{ asset('images/thumbnail/blank.png') }}">
                         <div class="${online-style} status-border position-absolute shadow-lg" style="right: 0; bottom: 0; height: 25px; width: 25px; border-radius: 50%; display: inline-block"></div>
                     </a>
                 </div>
@@ -74,7 +74,7 @@
                 <div class="py-2">
                     <div class="text-center py-2">
                         <a href="/users/${id}/profile">
-                            <img style="max-height: 6rem" class="headshot-bg position-relative rounded-circle border mx-1" class="position-relative rounded-circle border mx-1" data-tadah-thumbnail-id="${id}" data-tadah-thumbnail-type="user-headshot">
+                            <img style="max-height: 6rem" class="headshot-bg position-relative rounded-circle border mx-1" class="position-relative rounded-circle border mx-1" data-tadah-thumbnail-id="${id}" data-tadah-thumbnail-type="user-headshot" src="{{ asset('images/thumbnail/blank.png') }}">
                         </a>
                     </div>
                     <div class="text-center px-2 py-1">

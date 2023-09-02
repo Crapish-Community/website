@@ -90,7 +90,7 @@
             <div class="container px-0">
                 <div class="card card-body">
                     <h3>Client Settings</h2>
-                    <small class="text-muted pb-2">currently only apply for 2014</small>
+                    <small class="text-muted pb-2">Old corescripts are temp disabled</small>
                     <form method="post">
                         @csrf
                         <div class="form-check">

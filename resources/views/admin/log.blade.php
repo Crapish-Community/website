@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <h1><b>Action Log</b></h1>
-    <p>Records every action an administrator has taken on Tadah. Think something is missing from these logs? Ask a developer to add it.</p>
+    <p>Records every action an administrator has taken on {{ config('app.name') }}. Think something is missing from these logs? Ask a developer to add it.</p>
     @if ($actions->count() > 0)
     <table class="table">
         <thead>

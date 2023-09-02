@@ -6,6 +6,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <div class="alert alert-primary">
+                <i class="fas fa-info"></i> If you don't know how to host, follow <a href="balls">this guide</a>.
+            </div>
             <div class="card shadow-sm">
                 <div class="card-header">{{ __('Create Server') }}</div>
                 <div class="card-body">

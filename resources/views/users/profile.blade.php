@@ -148,6 +148,10 @@
                     <small class="d-block font-weight-bold text-success user-select-none"><i class="fas fa-user-shield mr-1"></i>This user is a moderator.</small>
                     @endif
 
+                    @if ($user->verified_hoster)
+                    <small class="d-block font-weight-bold text-blue user-select-none"><i class="fas fa-badge-check mr-1"></i>This user is a verified hoster.</small>
+                    @endif
+
                     @if ($user->donator)
                     <small class="d-block font-weight-bold text-donator user-select-none"><i class="fas fa-gem mr-1"></i>This user is a donator.</small>
                     @endif

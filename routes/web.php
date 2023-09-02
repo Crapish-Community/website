@@ -163,8 +163,8 @@ Route::get('/admin/gamejoins', [Controllers\AdminController::class, 'gamejoins']
 Route::get('/admin/unlinkdiscord', [Controllers\AdminController::class, 'forceunlinkdiscord'])->name('admin.forceunlinkdiscord');
 Route::post('/admin/unlinkdiscord', [Controllers\AdminController::class, 'forceunlinkdiscord']);
 Route::get('/admin/log', [Controllers\AdminController::class, 'log'])->name('admin.log');
-Route::get('/admin/hoster', [App\Http\Controllers\AdminController::class, 'booster'])->name('admin.hoster');
-Route::post('/admin/hoster', [App\Http\Controllers\AdminController::class, 'togglebooster'])->name('admin.togglehoster');
+Route::get('/admin/hoster', [App\Http\Controllers\AdminController::class, 'hoster'])->name('admin.hoster');
+Route::post('/admin/hoster', [App\Http\Controllers\AdminController::class, 'togglehoster'])->name('admin.togglehoster');
 
 // Yoo.
 // Servers routes

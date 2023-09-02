@@ -139,7 +139,7 @@ class ServersController extends Controller
             'version' => ['required', new VersionRule()],
             'maxplayers' => ['required', 'integer', 'max:50', 'min:1'],
             'chattype' => ['nullable', 'integer', Rule::in([0, 1, 2])],
-            'place' => ['required', 'max:15', new PlaceValidator()]
+            'place' => ['required', 'max:36200', new PlaceValidator()]
         ]);
 
         $server = Server::create([
@@ -227,7 +227,7 @@ class ServersController extends Controller
             'version' => ['required', new VersionRule()],
             'maxplayers' => ['required', 'integer', 'max:50', 'min:1'],
             'chattype' => ['nullable', 'integer', Rule::in([0, 1, 2])],
-            'place' => ['max:15', new PlaceValidator()],
+            'place' => ['max:36200', new PlaceValidator()],
 			'revealip' => 'sometimes'
         ];
 		

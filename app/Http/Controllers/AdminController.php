@@ -69,7 +69,7 @@ class AdminController extends Controller
 
     public function generateinvitekey(Request $request) {
         $request->validate([
-            'uses' => ['required', 'min:1', 'max:20', 'integer']
+            'uses' => ['required', 'min:1', 'max:50', 'integer']
         ]);
 
         $inviteKey = InviteKey::create([
@@ -257,7 +257,6 @@ class AdminController extends Controller
             'wearing' => false
         ]);
 
-        /*
         // BUGGY but lets check
         if (config('app.discord_webhook_enabled') && $request->has('announce')) {
             // sanitize title/desc for basic all pings
@@ -284,7 +283,7 @@ class AdminController extends Controller
                         'fields' => [
                             [
                                 'name' => 'Price',
-                                'value' => sprintf('<:dahllor:1038637832895475753> %s %s', $item->price, config('app.currency_name_multiple')),
+                                'value' => sprintf('<:dahllor:1145276776117960734> %s %s', $item->price, config('app.currency_name_multiple')),
                                 'inline' => false
                             ]
                         ]
@@ -292,7 +291,6 @@ class AdminController extends Controller
                 ]
             ]);
         }
-        */
 
         AdminLog::log($request->user(), sprintf('Created XML item %s. (ITEM ID: %s)', $item->name, $item->id));
 

@@ -29,7 +29,7 @@
         </a>
     </div>
     <div class="text-center">
-        <a class="btn btn-lg btn-success dl-client mt-4" style="width: 35%" role="button" href="https://cdn.discordapp.com/attachments/1118772952830328832/1146764572317978644/crapish.zip">Download Client</a>
+        <a class="btn btn-lg btn-success dl-client mt-4" style="width: 35%" role="button" href="https://cdn.discordapp.com/attachments/1118772952830328832/1147586539585548338/Crapish-1.0.2.exe">Download Client</a>
     </div>
 </div>
 <div class="modal fade" id="DownloadedClient" tabindex="-1" aria-labelledby="DownloadedClientLabel" aria-hidden="true">
@@ -46,18 +46,15 @@
                     <div class="row">
                         <div class="col">
                             <h2 class="font-weight-normal">1.</h2>
-                            <p>Save and extract .zip to any folder</p>
-                            <img class="img-fluid" src="{{ asset('images/site/download/Install1.png') }}" alt="{{ config('app.name') }} Guide">
+                            <p>Save the file to your computer</p>
                         </div>
                         <div class="col">
                         <h2 class="font-weight-normal">2.</h2>
                             <p>Run {{ config('app.name') }} installer</p>
-                            <img class="img-fluid" src="{{ asset('images/site/download/Install2.png') }}" alt="{{ config('app.name') }} Guide">
                         </div>
                         <div class="col">
                         <h2 class="font-weight-normal">3.</h2>
                             <p>Start joining and hosting one of many {{ config('app.name') }} games!</p>
-                            <a role="button" type="button" class="btn btn-block btn-success shadow-sm" href="{{ route('servers.index') }}">Play</a>
                         </div>
                     </div>
                 </div>

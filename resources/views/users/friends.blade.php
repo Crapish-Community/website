@@ -18,7 +18,7 @@
                     <div class="row p-2">
                         <div class="d-inline-block position-relative h-100">										
                             <a href="/users/{{$friendUser->id}}/profile">
-                                <img style="max-height: 6rem" class="position-relative rounded-circle border mx-1" data-tadah-thumbnail-id="{{ $friendUser->id }}" data-tadah-thumbnail-type="user-headshot" src="{{ $thumbnail::static_image('blank.png') }}">
+                                <img style="max-height: 6rem" class="position-relative rounded-circle border mx-1" data-tadah-thumbnail-id="{{ $friendUser->id }}" data-tadah-thumbnail-type="user-headshot" src="{{ asset('images/thumbnail/blank.png') }}">
                                 <div class="{{Cache::has('last_online' . $friendUser->id) ? 'btn-primary' : 'btn-secondary'}} status-border position-absolute shadow-lg" style="right: 0; bottom: 0; height: 25px; width: 25px; border-radius: 50%; display: inline-block"></div>
                             </a>
                         </div>

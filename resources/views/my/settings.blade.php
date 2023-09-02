@@ -94,14 +94,14 @@
                     <form method="post">
                         @csrf
                         <div class="form-check">
-                            <input class="form-check-input" value="old_cores" type="radio" name="old_cores" id="themeRadio" {{(Auth::user()->old_cores ? '' : 'checked')}}>
+                            <input class="form-check-input" value="old_cores" type="radio" name="old_cores" id="themeRadio" checked>
                             <label class="form-check-label" for="themeRadio">
                                 New CoreScripts
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" value="new_cores" type="radio" name="old_cores" id="themeRadio" {{(Auth::user()->old_cores ? "checked" : '')}}>
-                            <label class="form-check-label" for="themeRadio">
+                            <input class="form-check-input" value="new_cores" type="radio" name="old_cores" id="themeRadio">
+                            <label class="form-check-label disabled" for="themeRadio">
                                 Old CoreScripts
                             </label>
                         </div>

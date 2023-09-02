@@ -23,7 +23,7 @@
 
             <h4>Special thanks</h4>
             <ul>
-                <li><b>CarlTheObeseCat</b> - Helped with {{ config('app.name') }} logos</li>
+                <li><b>CarlTheObeseCat</b> - Created logos "inspired" from Kapish</li>
             </ul>
 
             <p>Without these people, {{ config('app.name') }} would not be as good as it is today.</p>

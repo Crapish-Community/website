@@ -16,7 +16,7 @@ $landing = true;
 
             <div class="card card-body border-0 rounded-lg shadow">
                 <p>
-                    As we gradually reopen servers, we would like to remind you all that online play is offered by third-party servers that are not owned, operated, or supervised by {{ config('app.name') }}.
+                    We would like to remind you all that online play is offered by third-party servers that are not owned, operated, or supervised by {{ config('app.name') }}.
                     <br><br>
                     Accordingly, please use a VPN if you believe that your IP address is sensitive information that can be leaked. Server hosts are able to see your IP address.
                     <br><br>

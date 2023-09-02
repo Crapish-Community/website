@@ -137,7 +137,7 @@ class UsersController extends Controller
                 ]);
 
                 $user = $request->user();
-                $user->old_cores = ($request->old_cores != "new_cores" ? false : true);
+                $user->old_cores = false;
                 $user->save();
             }
             elseif (isset($request->theme))

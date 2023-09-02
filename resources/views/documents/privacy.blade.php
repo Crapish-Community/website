@@ -16,7 +16,6 @@
             </ul>
             <p>{{ config('app.name') }} will never reveal any of your information on purpose. If you want your data removed from {{ config('app.name') }}, you may contact us <a href="mailto:{{ config('app.mailing_address') }}">by email</a> including where and what data you want removed. You may also have to prove that you are the owner, or creator, of that data.</p>
             <p>In the event that a data breach ever occurs, or user data is otherwise compromised, all users will be immediately notified by whatever is the fastest means (either through email, the community Discord server, or a banner on the site itself.) Additionally, if such data gets compromised, a fully transparent post-mortem of what was stolen will be published.</p>
-            <p>Additionally, {{ config('app.name') }} uses advertisements to create money that hosts our servers. We use Google AdSense, and they collect cookies to show personalized advertisements. You may opt out of personalized advertisements by <a href="https://www.google.com/settings/ads">visiting your Google account's advertisement settings page.</a>
         </div>
     </div>
 </div>

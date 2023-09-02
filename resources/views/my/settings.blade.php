@@ -100,7 +100,7 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" value="new_cores" type="radio" name="old_cores" id="themeRadio">
+                            <input class="form-check-input disabled" value="new_cores" type="radio" name="old_cores" id="themeRadio">
                             <label class="form-check-label disabled" for="themeRadio">
                                 Old CoreScripts
                             </label>

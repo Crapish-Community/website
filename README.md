@@ -1,5 +1,5 @@
-# <img src="https://crapish.fun/images/logos/small.png" width="30"> **Crapish** Website (updated version of [web-trunk](https://gitlab.com/tadah/web-trunk))
-The tartar sauce spaghetti code website of old legos.
+# <img src="https://crapish.fun/images/logos/small.png" width="30"> **Crapish** Website
+The Crapish website is a slightly modified version of the [tadah website](https://gitlab.com/tadah/web-trunk). Full credit goes to the original developers of the project.
 
 # Setting It Up
 ## Prerequisites

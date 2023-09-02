@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
     <h1><b>Toggle Boosters Club</b></h1>
-    <p>Toggles Booster Club on a user. They get their log-in bonus doubled, and they get more place slots. They also get a badge in-game on the player list.</p>
+    <p>Toggles Booster Club on a user. They get their log-in bonus doubled and they also get a badge in-game on the player list.</p>
     <hr>
     @if (session()->has('error'))
         <div class="alert alert-danger">

@@ -53,7 +53,7 @@
                         @if (Auth::user()->isAdmin() && Auth::user()->id != $user->id && !$user->isAdmin())
                             @if (Auth::user()->isModerator())
                             <div class="col-auto px-1">
-                                <a class="btn btn-danger" style="display:inline-block;" href="{{ route('mod.banuser', ['username' => $user->username]) }}"><i class="fas fa-hammer me-1" aria-hidden="true"></i>Ban</a>
+                                <a class="btn btn-danger" style="display:inline-block;" href="{{ route('mod.banuser', ['username' => $user->username]) }}"><i class="fas fa-hammer me-1" aria-hidden="false"></i>Ban</a>
                             </div>
                             @else
                             <div class="col-auto px-1">

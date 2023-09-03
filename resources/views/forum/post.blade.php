@@ -79,7 +79,7 @@
                                 </div>
                                 <br>
                                 <img class="img-fluid" style="max-height: 128px;" data-tadah-thumbnail-id="{{ $post->user->id }}" data-tadah-thumbnail-type="user-thumbnail" src="{{ asset('images/thumbnail/blank.png') }}" alt="{{ $post->user->username }}">
-                                <p class="m-0">@if ($post->user->isAdmin()) <p class="text-danger mt-0 mb-0 font-weight-bold"><i class="fas fa-shield mr-1"></i>Administrator</p> @endif @if ($post->user->isModerator()) <p class="text-Success mt-0 mb-0 font-weight-bold"><i class="fas fa-user-shield mr-1"></i>Moderator</p> @endif Joined: <p class="text-muted d-inline">{{ date('m/d/Y', strtotime($post->user->joined)) }}</p><br>Posts: <p class="text-muted d-inline">{{ $post->user->countPosts() }}</p></p>
+                                <p class="m-0">@if ($post->user->isAdmin()) <p class="text-danger mt-0 mb-0 font-weight-bold"><i class="fas fa-shield mr-1"></i>Administrator</p> @endif @if ($post->user->isModerator()) <p class="text-success mt-0 mb-0 font-weight-bold"><i class="fas fa-user-shield mr-1"></i>Moderator</p> @endif Joined: <p class="text-muted d-inline">{{ date('m/d/Y', strtotime($post->user->joined)) }}</p><br>Posts: <p class="text-muted d-inline">{{ $post->user->countPosts() }}</p></p>
                             </div>
                             <div class="col-md-10">
                                 <p class="text-muted mb-0"><small>Posted on {{ date('F j, Y, g:i A', strtotime($post->created_at)) }} ({{ $post->created_at->diffForHumans() }})</small></p>
@@ -130,7 +130,7 @@
                                     </div>
                                     <br>
                                     <img class="img-fluid" style="max-height: 128px;" data-tadah-thumbnail-id="{{ $reply->user->id }}" data-tadah-thumbnail-type="user-thumbnail" src="{{ asset('images/thumbnail/blank.png') }}" alt="{{ $reply->user->username }}">
-                                    <p class="m-0">@if ($reply->user->isStaff()) <p class="text-danger mt-0 mb-0 font-weight-bold"><i class="fas fa-shield mr-1"></i>Administrator</p> @endif @if ($post->user->isModerator()) <p class="text-Success mt-0 mb-0 font-weight-bold"><i class="fas fa-user-shield mr-1"></i>Moderator</p> @endif Joined: <p class="text-muted d-inline">{{ date('m/d/Y', strtotime($reply->user->joined)) }}</p><br>Posts: <p class="text-muted d-inline">{{ $reply->user->countPosts() }}</p></p>
+                                    <p class="m-0">@if ($reply->user->isAdmin()) <p class="text-danger mt-0 mb-0 font-weight-bold"><i class="fas fa-shield mr-1"></i>Administrator</p> @endif @if ($post->user->isModerator()) <p class="text-success mt-0 mb-0 font-weight-bold"><i class="fas fa-user-shield mr-1"></i>Moderator</p> @endif Joined: <p class="text-muted d-inline">{{ date('m/d/Y', strtotime($reply->user->joined)) }}</p><br>Posts: <p class="text-muted d-inline">{{ $reply->user->countPosts() }}</p></p>
                                 </div>
                                 <div class="col-md-10">
                                     <p class="text-muted mb-0"><small>Posted on {{ date('F j, Y, g:i A', strtotime($reply->created_at)) }} ({{ $reply->created_at->diffForHumans() }})</small></p>

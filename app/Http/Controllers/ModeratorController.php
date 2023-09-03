@@ -300,7 +300,7 @@ class ModeratorController extends Controller
 
         AdminLog::log($request->user(), sprintf('Created invite key %s with %s uses.', $inviteKey->token, $inviteKey->uses));
 
-        return redirect('/admin/createinvitekey')->with('success', 'Created invite key. Key: "' . $inviteKey->token  . '"');
+        return redirect('/moderator/createinvitekey')->with('success', 'Created invite key. Key: "' . $inviteKey->token  . '"');
     }
 
     public function disableinvitekey(Request $request, $id) {
@@ -315,6 +315,6 @@ class ModeratorController extends Controller
 
         AdminLog::log($request->user(), sprintf('Disabled invite key %s.', $invitekey->token));
 
-        return redirect('/admin/invitekeys')->with('message', 'Invite key ID: ' . $invitekey->id . ', Token: ' . $invitekey->token . ' disabled.');
+        return redirect('/moderator/invitekeys')->with('message', 'Invite key ID: ' . $invitekey->id . ', Token: ' . $invitekey->token . ' disabled.');
     }
 }

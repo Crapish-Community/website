@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="alert alert-primary">
-                <i class="fas fa-info mr-1"></i> If you don't know how to host, follow <button type="button" class="btn-link bg-transparent !p-0" data-toggle="modal" data-target="#guideModal">this guide</button>.
+                <i class="fas fa-info mr-1"></i> If you don't know how to host, follow <button type="button" class="btn btn-link !p-0" data-toggle="modal" data-target="#guideModal">this guide</button>.
             </div>
             <div class="card shadow-sm">
                 <div class="card-header">{{ __('Create Server') }}</div>

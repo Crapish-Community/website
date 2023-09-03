@@ -58,7 +58,6 @@
         </table>
     @else
         <div class="text-center">
-            <img class="py-2" src="{{ asset('/images/blobs/tired.png') }}" class="img-fluid">
             <h2>Nothing found</h2>
             <p>Looks like there are no bans to display for this query.</p>
         </div>

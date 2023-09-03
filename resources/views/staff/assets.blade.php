@@ -75,14 +75,14 @@
 								@if($item->type == 'Audio')
 									<button class="btn-sm btn btn-primary" onclick="reviewAudio({{ $item->id }}, '{{ $item->user->username }}')">Review</button>
 								@else
-									<form method="POST" action="{{ $item->id }}/approve" enctype="multipart/form-data">
+									<form method="POST" action="{{ route('staff.approve', $item->id) }}" enctype="multipart/form-data">
 										@csrf
 										<div class="btn-group w-100" role="group">                                                                                        
 											<button style="width: 50%" type="submit" name="submit" class="btn btn-sm btn-primary" value="Approve">Accept</button>
 											<button style="width: 50%" type="submit" name="submit" class="btn btn-sm btn-secondary" value="Deny">Deny</button>
 										</div>
 									</form>
-									<a href="ban?username={{ $item->user->username }}" class="btn-sm btn btn-danger mt-1">Moderate User</a>
+									<a href="{{route('staff.ban', ['username' => $item->user->username])}}" class="btn-sm btn btn-danger mt-1">Moderate User</a>
 								@endif
 						   </div>
                         </div>

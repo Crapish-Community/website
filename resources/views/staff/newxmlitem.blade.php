@@ -19,7 +19,7 @@
             {{ session()->get('success') }}
         </div>
     @endif
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('staff.createxmlitem') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
@@ -190,12 +190,7 @@
     $('#robloxItemInfo').click(function(event) {
         $.ajax({
             type: "GET",
-            @admin
-            url: "/admin/robloxitemdata/" + $('#robloxid').val(),
-            @endadmin
-            @if (Auth::user()->isModerator())
-            url: "/moderator/robloxitemdata/" + $('#robloxid').val(),
-            @endif
+            url: "/staff/robloxitemdata/" + $('#robloxid').val(),
             dataType: "json",
             success: function (data) {
                 $("#itemname").val(data["Name"]);
@@ -205,14 +200,9 @@
 
         $.ajax({
             type: "GET",
-            @admin
-            url: "/admin/robloxxmldata/" + $('#robloxid').val() + "/" + $('#robloxversion').val(),
-            @endadmin
-            @if (Auth::user()->isModerator())
-            url: "/moderator/robloxxmldata/" + $('#robloxid').val() + "/" + $('#robloxversion').val(),
-            @endif
+            url: "/staff/robloxxmldata/" + $('#robloxid').val() + "/" + $('#robloxversion').val(),
             success: function (data){
-                $("#xml").html(data.replaceAll("http://www.roblox.com/asset", "http://crapish.fun/asset").replaceAll("class=\"Accessory\"", "class=\"Hat\""));
+                $("#xml").html(data.replaceAll("http://www.roblox.com/asset", "http://tadah.rocks/asset").replaceAll("class=\"Accessory\"", "class=\"Hat\""));
             }
         });
     });

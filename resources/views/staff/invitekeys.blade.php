@@ -36,7 +36,7 @@
                     <td>{{ date('m/d/Y ', strtotime($invitekey->created_at)) }}</td>
                     <td>{{ date('m/d/Y ', strtotime($invitekey->updated_at)) }}</td>
                     <td class="text-center">
-                        <form method="POST" action="invitekeys/{{ $invitekey->id }}/disable">
+                        <form method="POST" action="{{ route('staff.disableinvitekey', $invitekey->id) }}">
                             @csrf
 
                             <button class="btn btn-danger btn-sm shadow-sm"><i class="fas fa-times"></i></button>

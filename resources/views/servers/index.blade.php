@@ -63,7 +63,7 @@
 										<div class="position-relative text-center h-100">
 											<img class="position-relative rounded-circle headshot-bg border mx-1" data-tadah-thumbnail-id="{{ $server->creator }}" data-tadah-thumbnail-type="user-headshot" width="35" src="{{ asset('images/thumbnail/blank.png') }}" width="35">
 											@if (\App\Models\User::find($server->creator)->verified_hoster)
-												<div data-toggle="tooltip" data-placement="center" title="Verified Hoster" style="right: 0; bottom: 0;" class="position-absolute badge badge-primary text-white shadow-sm badge-pill user-select-none ml-1"><i class="fas fa-badge-check"></i></div>
+												<div data-toggle="tooltip" data-placement="left" title="Verified Hoster" style="right: 0; bottom: 0;" class="position-absolute badge badge-primary text-white shadow-sm badge-pill user-select-none ml-1"><i class="fas fa-badge-check"></i></div>
 											@endif
 										</div>
 										<figcaption class="text-center link-primary">{{ \Illuminate\Support\Str::limit(\App\Models\User::find($server->creator)->username, 8) }}</figcaption>

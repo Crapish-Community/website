@@ -10,11 +10,11 @@ class ModeratorController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('moderator');
+        $this->middleware('admin');
     }
 
     public function index(Request $request)
     {
-        return view('moderator.index');
+        return view('admin.index');
     }
 }

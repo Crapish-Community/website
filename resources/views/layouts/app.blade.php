@@ -156,6 +156,11 @@
                                     <i class="fas fa-hammer mr-1"></i>{{ __('Admin') }}
                                 </a>
                                 @endadmin
+                                @if (Auth::user()->isModerator())
+                                <a class="dropdown-item" href="/staff">
+                                    <i class="fas fa-hammer mr-1"></i>{{ __('Moderator') }}
+                                </a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('my.settings') }}">
                                     <i class="fas fa-fw fa-cog mr-1 align-middle"></i>{{ __('Settings') }}
                                 </a>

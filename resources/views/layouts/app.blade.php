@@ -213,9 +213,11 @@
                             </li>
 
                             @if (config('app.users_create_invite_keys'))
+                            @if (!$user->isStaff())
                             <li class="nav-item" data-tadah-route="/my/keys">
                                 <a class="nav-link" href="{{ route('my.keys') }}">{{ __('Invites') }}</a>
                             </li>
+                            @endif
                             @endif
                         </ul>
                     </div>

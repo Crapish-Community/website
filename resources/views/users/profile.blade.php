@@ -63,7 +63,6 @@
                                 <a class="btn btn-danger" style="display:inline-block;" href="{{ route('mod.banuser', ['username' => $user->username]) }}"><i class="fas fa-hammer me-1" aria-hidden="false"></i>Ban</a>
                             </div>
                         @endif
-                        @endif
                         @if($user->id != Auth::user()->id)
                         @php
                             $friendship = \App\Models\Friendship::where(['requester_id' => $user->id, 'receiver_id' => Auth::user()->id])->first() ?: \App\Models\Friendship::where(['requester_id' => Auth::user()->id, 'receiver_id' => $user->id])->first();

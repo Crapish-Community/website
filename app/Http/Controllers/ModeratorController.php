@@ -137,4 +137,125 @@ class ModeratorController extends Controller
 
         return back();
     }
+
+    public function xmlitem(Request $request)
+    {
+        return view('admin.newxmlitem');
+    }
+
+    public function createxmlitem(Request $request)
+    {
+        $shouldHatch = $request->has('shouldhatch');
+        $request->validate([
+            'name' => ['required', 'string', 'max:100'],
+            'description' => ['string', 'max:2000'],
+            'price' => ['required', 'integer', 'min:0', 'max:999999'],
+			'stock_circulating' => ['integer', 'min:5', 'max:1000'],
+            'xml' => ['required', 'string'],
+            'type' => ['required', 'string'],
+            'hatchname' => ['string', 'max:100', 'nullable'],
+            'hatchdesc' => ['string', 'max:2000', 'nullable'],
+            'hatchxml' => ['string', 'nullable'],
+            'hatchdate' => ['date', 'nullable'],
+            'hatchtype' => ['string', 'nullable']
+        ]);
+		
+		// Kinda iffy but radio button :/
+		switch($request->marketplace_type)
+		{
+			case "boosters":
+				$limitedU     = false;
+				$boostersOnly = true;
+				break;
+			case "limitedu":
+				$limitedU     = true;
+				$boostersOnly = false;
+				break;
+			default:
+				$limitedU     = false;
+				$boostersOnly = false;
+				break;
+		}
+
+        $item = Item::create([
+            'name' => $request['name'],
+            'description' => $request['description'],
+            'creator' => $request->user()->id,
+            'thumbnail_url' => $request['thumbnailurl'],
+            'price' => $request['price'],
+			'stock_circulating' => $request->stock_circulating,
+            'type' => $request['type'],
+			'is_limitedu' => $limitedU,
+			'is_boosters_only' => $boostersOnly,
+            'hatchtype' => ($shouldHatch ? $request['hatchtype'] : null),
+            'hatchdate' => ($shouldHatch ? Carbon::parse($request['hatchdate']) : null),
+            'hatchname' => ($shouldHatch ? $request['hatchname'] : null),
+            'hatchdesc' => ($shouldHatch ? $request['hatchdesc'] : null),
+            'sales' => 0,
+            'onsale' => $request->has('onsale'),
+            'approved' => (config('app.assets_approved_by_default') ? 1 : ($request->user()->isStaff() ? 1 : 0))
+        ]);
+
+        if($shouldHatch) {
+            Storage::disk('public')->put('hatch_items/' . $item->id, $request['hatchxml']);
+        }
+        Storage::disk('public')->put('items/' . $item->id, $request['xml']);
+
+        if ($item->type == "Hat" || $item->type == "Model" || $item->type == "Gear") {
+            $this->dispatch(new RenderJob('xml', $item->id));
+        }
+
+        if($item->type == "Head") {
+            $this->dispatch(new RenderJob('head', $item->id));
+        }
+
+        if ($item->type == "Package") {
+            $this->dispatch(new RenderJob('clothing', $item->id));
+        }
+
+        OwnedItems::create([
+            'user_id' => $request->user()->id,
+            'item_id' => $item->id,
+            'wearing' => false
+        ]);
+
+        // BUGGY but lets check
+        if (config('app.discord_webhook_enabled') && $request->has('announce')) {
+            // sanitize title/desc for basic all pings
+            $name = str_replace('@here', '`@here`', str_replace('@everyone', '`@everyone`', $request['name']));
+            $description = str_replace('@here', '`@here`', str_replace('@everyone', '`@everyone`', $request['description']));
+            $response = Http::post(sprintf('https://discord.com/api/webhooks/%s/%s', config('app.discord_webhook_id'), config('app.discord_webhook_token')), [
+                'content' => '**New item:**',
+                'embeds' => [
+                    [
+                        'title' => $item->name,
+                        'description' => $item->description,
+                        'url' => url(route('item.view', $item->id)),
+                        'color' => 255,
+                        'timestamp' => date("Y-m-d\TH:i:s.u"),
+                        'thumbnail' => [ url(route('client.itemthumbnail', ['itemId' => $item->id], false) . sprintf('?tick=%d', time())) ],
+                        'footer' => [
+                            'text' => sprintf("%s %s", config('app.name'), $item->type)
+                        ],
+                        'author' => [
+                            'name' => $request->user()->username,
+                            'url' => url(route('users.profile', $request->user()->id)),
+                            'icon_url' => url(route('client.userthumbnail', ['userId' => $request->user()->id]), false) . sprintf('?tick=%d', time())
+                        ],
+                        'fields' => [
+                            [
+                                'name' => 'Price',
+                                'value' => sprintf('<:dahllor:1145276776117960734> %s %s', $item->price, config('app.currency_name_multiple')),
+                                'inline' => false
+                            ]
+                        ]
+                    ]
+                ]
+            ]);
+        }
+
+        AdminLog::log($request->user(), sprintf('Created XML item %s. (ITEM ID: %s)', $item->name, $item->id));
+
+        return redirect(route('item.view', $item->id))->with('message', ($shouldHatch ? 'XML asset successfully created and scheduled to hatch.' : 'XML asset successfully created.'));
+    }
 }

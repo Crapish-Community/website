@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Tadah'),
+    'name' => env('APP_NAME', 'Crapish'),
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return [
         '2014' => '1.0.2'
     ],
 
-    'hostname' => parse_url(env('APP_URL', ''))['host'],
+    'hostname' => parse_url(env('APP_URL', 'https://crapish.fun'))['host'],
 
     /*
     |--------------------------------------------------------------------------

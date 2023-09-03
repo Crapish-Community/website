@@ -236,7 +236,7 @@ class CatalogController extends Controller
                 'type' => $request['type'],
                 'sales' => 0,
                 'onsale' => true,
-                'approved' => (config('app.assets_approved_by_default') ? 1 : ($user->isAdmin() ? 1 : 0))
+                'approved' => (config('app.assets_approved_by_default') ? 1 : ($user->isStaff() ? 1 : 0))
             ]);
             
             if ($request->type != 'Audio')

@@ -11,21 +11,21 @@
     <div class="row">
 			<div class="col-sm-3 my-2">
 				<h3 class="text-muted">Assets</h3>
-				<li><a href="{{ route('moderator.assets') }}">Asset Approval</a></li>
-				<li><a href="{{ route('moderator.xmlitem') }}">New XML Item</a></li>
+				<li><a href="{{ route('staff.assets') }}">Asset Approval</a></li>
+				<li><a href="{{ route('staff.xmlitem') }}">New XML Item</a></li>
 			</div>
 			
 			<div class="col-sm-3 my-2">
 				<h3 class="text-muted">Users</h3>
-				<li><a href="{{ route('moderator.banlist') }}">Ban List</a></li>
-				<li><a href="{{ route('moderator.ban') }}">Ban User</a></li>
-				<li><a href="{{ route('moderator.unban') }}">Unban User</a></li>
+				<li><a href="{{ route('staff.banlist') }}">Ban List</a></li>
+				<li><a href="{{ route('staff.ban') }}">Ban User</a></li>
+				<li><a href="{{ route('staff.unban') }}">Unban User</a></li>
 			</div>
 			
 			<div class="col-sm-3 my-2">
 				<h3 class="text-muted">Site</h3>
-				<li><a href="{{ route('moderator.invitekeys') }}">Manage Existing Invite Keys</a></li>
-				<li><a href="{{ route('moderator.createinvitekey') }}">Create New Invite Key</a></li>
+				<li><a href="{{ route('staff.invitekeys') }}">Manage Existing Invite Keys</a></li>
+				<li><a href="{{ route('staff.createinvitekey') }}">Create New Invite Key</a></li>
 			</div>
 	</div>
 </div>

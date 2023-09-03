@@ -123,35 +123,24 @@ Route::middleware('auth')->group(function() {
 
 
 // Staff routes
-Route::get('/moderator', [App\Http\Controllers\ModeratorController::class, 'index'])->name('moderator.index');
-Route::get('/moderator/ban', [App\Http\Controllers\ModeratorController::class, 'ban'])->name('moderator.ban');
-Route::post('/moderator/ban', [App\Http\Controllers\ModeratorController::class, 'banuser'])->name('moderator.banuser');
-Route::get('/moderator/unban', [App\Http\Controllers\ModeratorController::class, 'unban'])->name('moderator.unban');
-Route::post('/moderator/unban', [App\Http\Controllers\ModeratorController::class, 'unbanuser'])->name('moderator.unbanuser');
-Route::get('/moderator/assets', [App\Http\Controllers\ModeratorController::class, 'assets'])->name('moderator.assets');
-Route::post('/moderator/{id}/approve', [App\Http\Controllers\ModeratorController::class, 'approve'])->name('moderator.approve');
-Route::get('/moderator/banlist', [App\Http\Controllers\ModeratorController::class, 'banlist'])->name('moderator.banlist');
-Route::get('/moderator/newxmlitem', [App\Http\Controllers\ModeratorController::class, 'xmlitem'])->name('moderator.xmlitem');
-Route::post('/moderator/newxmlitem', [App\Http\Controllers\ModeratorController::class, 'createxmlitem'])->name('moderator.createxmlitem');
-Route::get('/moderator/robloxitemdata/{id}', [App\Http\Controllers\ModeratorController::class, 'robloxitemdata']);
-Route::get('/moderator/robloxxmldata/{id}/{version}', [App\Http\Controllers\ModeratorController::class, 'robloxxmldata']);
-Route::get('/moderator/invitekeys', [App\Http\Controllers\ModeratorController::class, 'invitekeys'])->name('moderator.invitekeys');
-Route::post('/moderator/invitekeys/{id}/disable', [App\Http\Controllers\ModeratorController::class, 'disableinvitekey'])->name('moderator.disableinvitekey');
-Route::get('/moderator/createinvitekey', [App\Http\Controllers\ModeratorController::class, 'createinvitekey'])->name('moderator.createinvitekey');
-Route::post('/moderator/createinvitekey', [App\Http\Controllers\ModeratorController::class, 'generateinvitekey'])->name('moderator.generateinvitekey')->middleware('throttle:10,1');
+Route::get('/staff/ban', [App\Http\Controllers\StaffController::class, 'ban'])->name('staff.ban');
+Route::post('/staff/ban', [App\Http\Controllers\StaffController::class, 'banuser'])->name('staff.banuser');
+Route::get('/staff/unban', [App\Http\Controllers\StaffController::class, 'unban'])->name('staff.unban');
+Route::post('/staff/unban', [App\Http\Controllers\StaffController::class, 'unbanuser'])->name('staff.unbanuser');
+Route::get('/staff/assets', [App\Http\Controllers\StaffController::class, 'assets'])->name('staff.assets');
+Route::post('/staff/{id}/approve', [App\Http\Controllers\StaffController::class, 'approve'])->name('staff.approve');
+Route::get('/staff/banlist', [App\Http\Controllers\StaffController::class, 'banlist'])->name('staff.banlist');
+Route::get('/staff/newxmlitem', [App\Http\Controllers\StaffController::class, 'xmlitem'])->name('staff.xmlitem');
+Route::post('/staff/newxmlitem', [App\Http\Controllers\StaffController::class, 'createxmlitem'])->name('staff.createxmlitem');
+Route::get('/staff/robloxitemdata/{id}', [App\Http\Controllers\StaffController::class, 'robloxitemdata']);
+Route::get('/staff/robloxxmldata/{id}/{version}', [App\Http\Controllers\StaffController::class, 'robloxxmldata']);
+Route::get('/staff/invitekeys', [App\Http\Controllers\StaffController::class, 'invitekeys'])->name('staff.invitekeys');
+Route::post('/staff/invitekeys/{id}/disable', [App\Http\Controllers\StaffController::class, 'disableinvitekey'])->name('staff.disableinvitekey');
+Route::get('/staff/createinvitekey', [App\Http\Controllers\StaffController::class, 'createinvitekey'])->name('staff.createinvitekey');
+Route::post('/staff/createinvitekey', [App\Http\Controllers\StaffController::class, 'generateinvitekey'])->name('staff.generateinvitekey')->middleware('throttle:10,1');
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/truncategametokens', [App\Http\Controllers\AdminController::class, 'truncategametokens'])->name('admin.truncategametokens');
 Route::get('/admin/truncateservers', [App\Http\Controllers\AdminController::class, 'truncateservers'])->name('admin.truncateservers');
-Route::get('/admin/invitekeys', [App\Http\Controllers\AdminController::class, 'invitekeys'])->name('admin.invitekeys');
-Route::post('/admin/invitekeys/{id}/disable', [App\Http\Controllers\AdminController::class, 'disableinvitekey'])->name('admin.disableinvitekey');
-Route::get('/admin/createinvitekey', [App\Http\Controllers\AdminController::class, 'createinvitekey'])->name('admin.createinvitekey');
-Route::post('/admin/createinvitekey', [App\Http\Controllers\AdminController::class, 'generateinvitekey'])->name('admin.generateinvitekey')->middleware('throttle:10,1');;
-Route::get('/admin/ban', [App\Http\Controllers\AdminController::class, 'ban'])->name('admin.ban');
-Route::post('/admin/ban', [App\Http\Controllers\AdminController::class, 'banuser'])->name('admin.banuser');
-Route::get('/admin/unban', [App\Http\Controllers\AdminController::class, 'unban'])->name('admin.unban');
-Route::post('/admin/unban', [App\Http\Controllers\AdminController::class, 'unbanuser'])->name('admin.unbanuser');
-Route::get('/admin/newxmlitem', [App\Http\Controllers\AdminController::class, 'xmlitem'])->name('admin.xmlitem');
-Route::post('/admin/newxmlitem', [App\Http\Controllers\AdminController::class, 'createxmlitem'])->name('admin.createxmlitem');
 Route::get('/admin/money', [App\Http\Controllers\AdminController::class, 'money'])->name('admin.money');
 Route::post('/admin/money', [App\Http\Controllers\AdminController::class, 'changemoney'])->name('admin.changemoney');
 Route::get('/admin/rewarditem', [App\Http\Controllers\AdminController::class, 'item'])->name('admin.item');
@@ -160,10 +149,7 @@ Route::get('/admin/forcewearitem', [App\Http\Controllers\AdminController::class,
 Route::get('/admin/renderasset', [App\Http\Controllers\AdminController::class, 'renderasset'])->name('admin.renderasset');
 Route::post('/admin/renderasset', [App\Http\Controllers\AdminController::class, 'renderasset']);
 Route::post('/admin/forcewearitem', [App\Http\Controllers\AdminController::class, 'forcewearitem'])->name('admin.forcewearitem');
-Route::get('/admin/robloxitemdata/{id}', [App\Http\Controllers\AdminController::class, 'robloxitemdata']);
-Route::get('/admin/robloxxmldata/{id}/{version}', [App\Http\Controllers\AdminController::class, 'robloxxmldata']);
 Route::get('/admin/regenalluserthumbs', [App\Http\Controllers\AdminController::class, 'regenalluserthumbs']);
-Route::get('/admin/banlist', [App\Http\Controllers\AdminController::class, 'banlist'])->name('admin.banlist');
 Route::get('/admin/booster', [App\Http\Controllers\AdminController::class, 'booster'])->name('admin.booster');
 Route::post('/admin/booster', [App\Http\Controllers\AdminController::class, 'togglebooster'])->name('admin.togglebooster');
 Route::get('/admin/scribbler', [App\Http\Controllers\AdminController::class, 'scribbler'])->name('admin.scribbler');
@@ -172,8 +158,6 @@ Route::get('/admin/clientsettings', [App\Http\Controllers\AdminController::class
 Route::post('/admin/togglefflag', [App\Http\Controllers\AdminController::class, 'togglefflag'])->name('admin.togglefflag');
 Route::get('/admin/sitealert', [App\Http\Controllers\AdminController::class, 'sitealert'])->name('admin.sitealert');
 Route::post('/admin/createsitealert', [App\Http\Controllers\AdminController::class, 'createsitealert'])->name('admin.createsitealert');
-Route::get('/admin/assets', [App\Http\Controllers\AdminController::class, 'assets'])->name('admin.assets');
-Route::post('/admin/{id}/approve', [App\Http\Controllers\AdminController::class, 'approve'])->name('admin.approve');
 Route::get('/admin/alts/{id}', [Controllers\AdminController::class, 'alts'])->name('admin.alts');
 Route::get('/admin/gamejoins', [Controllers\AdminController::class, 'gamejoins'])->name('admin.gamejoins');
 Route::get('/admin/unlinkdiscord', [Controllers\AdminController::class, 'forceunlinkdiscord'])->name('admin.forceunlinkdiscord');
@@ -181,6 +165,7 @@ Route::post('/admin/unlinkdiscord', [Controllers\AdminController::class, 'forceu
 Route::get('/admin/log', [Controllers\AdminController::class, 'log'])->name('admin.log');
 Route::get('/admin/hoster', [App\Http\Controllers\AdminController::class, 'hoster'])->name('admin.hoster');
 Route::post('/admin/hoster', [App\Http\Controllers\AdminController::class, 'togglehoster'])->name('admin.togglehoster');
+Route::get('/moderator', [App\Http\Controllers\StaffController::class, 'index'])->name('staff.index');
 
 // Yoo.
 // Servers routes

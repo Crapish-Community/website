@@ -102,6 +102,13 @@
                             </a>
                         </li>
                         @endadmin
+                        @if (Auth::user()->isModerator())
+                        <li class="nav-item mr-1">
+                            <a class="nav-link" href="{{ route('moderator.index') }}">
+                                {{ __('Moderator') }}
+                            </a>
+                        </li>
+                        @endif
                         @endif
                         @guest
                         @if (Route::has('login'))
@@ -141,6 +148,11 @@
                                     <i class="fas fa-hammer mr-1"></i>{{ __('Admin') }}
                                 </a>
                                 @endadmin
+                                @if (Auth::user()->isModerator())
+                                <a class="dropdown-item" href="/moderator">
+                                    <i class="fas fa-hammer mr-1"></i>{{ __('Moderator') }}
+                                </a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('my.settings') }}">
                                     <i class="fas fa-fw fa-cog mr-1 align-middle"></i>{{ __('Settings') }}
                                 </a>

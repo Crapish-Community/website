@@ -123,7 +123,6 @@ Route::middleware('auth')->group(function() {
 
 
 // Staff routes
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/moderator', [App\Http\Controllers\ModeratorController::class, 'index'])->name('moderator.index');
 Route::get('/moderator/ban', [App\Http\Controllers\ModeratorController::class, 'ban'])->name('moderator.ban');
 Route::post('/moderator/ban', [App\Http\Controllers\ModeratorController::class, 'banuser'])->name('moderator.banuser');
@@ -136,6 +135,11 @@ Route::get('/moderator/newxmlitem', [App\Http\Controllers\ModeratorController::c
 Route::post('/moderator/newxmlitem', [App\Http\Controllers\ModeratorController::class, 'createxmlitem'])->name('moderator.createxmlitem');
 Route::get('/moderator/robloxitemdata/{id}', [App\Http\Controllers\ModeratorController::class, 'robloxitemdata']);
 Route::get('/moderator/robloxxmldata/{id}/{version}', [App\Http\Controllers\ModeratorController::class, 'robloxxmldata']);
+Route::get('/moderator/invitekeys', [App\Http\Controllers\ModeratorController::class, 'invitekeys'])->name('moderator.invitekeys');
+Route::post('/moderator/invitekeys/{id}/disable', [App\Http\Controllers\ModeratorController::class, 'disableinvitekey'])->name('moderator.disableinvitekey');
+Route::get('/moderator/createinvitekey', [App\Http\Controllers\ModeratorController::class, 'createinvitekey'])->name('moderator.createinvitekey');
+Route::post('/moderator/createinvitekey', [App\Http\Controllers\ModeratorController::class, 'generateinvitekey'])->name('moderator.generateinvitekey')->middleware('throttle:10,1');
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/truncategametokens', [App\Http\Controllers\AdminController::class, 'truncategametokens'])->name('admin.truncategametokens');
 Route::get('/admin/truncateservers', [App\Http\Controllers\AdminController::class, 'truncateservers'])->name('admin.truncateservers');
 Route::get('/admin/invitekeys', [App\Http\Controllers\AdminController::class, 'invitekeys'])->name('admin.invitekeys');

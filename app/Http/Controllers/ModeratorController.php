@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
 use App\Models\AdminLog;
+use App\Models\InviteKey;
 use App\Models\Item;
 use App\Models\Ban;
 use Carbon\Carbon;
@@ -273,5 +274,46 @@ class ModeratorController extends Controller
         $response = Http::get('https://assetdelivery.roblox.com/v1/asset?id=' . intval($id) . "&version=" . intval($version));
 
         return $response;
+    }
+
+    public function invitekeys(Request $request) {
+        $invitekeys = InviteKey::query();
+
+        return view('admin.invitekeys')->with('invitekeys', $invitekeys->orderBy('created_at', 'DESC')->paginate(10)->appends($request->all()));
+    }
+
+    public function createinvitekey(Request $request) {
+        return view('admin.createinvitekey');
+    }
+
+    public function generateinvitekey(Request $request) {
+        $request->validate([
+            'uses' => ['required', 'min:1', 'max:50', 'integer']
+        ]);
+
+        $inviteKey = InviteKey::create([
+            'creator' => $request->user()->id,
+            'token' => sprintf('%sKey-%s', config('app.name'), Str::random(25)),
+            'uses' => $request['uses']
+        ]);
+
+        AdminLog::log($request->user(), sprintf('Created invite key %s with %s uses.', $inviteKey->token, $inviteKey->uses));
+
+        return redirect('/admin/createinvitekey')->with('success', 'Created invite key. Key: "' . $inviteKey->token  . '"');
+    }
+
+    public function disableinvitekey(Request $request, $id) {
+        $invitekey = InviteKey::find($id);
+
+        if (!$invitekey) {
+            return abort(404);
+        }
+
+        $invitekey->uses = 0;
+        $invitekey->save();
+
+        AdminLog::log($request->user(), sprintf('Disabled invite key %s.', $invitekey->token));
+
+        return redirect('/admin/invitekeys')->with('message', 'Invite key ID: ' . $invitekey->id . ', Token: ' . $invitekey->token . ' disabled.');
     }
 }

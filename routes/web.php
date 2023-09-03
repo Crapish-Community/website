@@ -122,11 +122,13 @@ Route::middleware('auth')->group(function() {
 });
 
 
-// Admin routes
+// Staff routes
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 Route::get('/moderator', [App\Http\Controllers\ModeratorController::class, 'index'])->name('moderator.index');
 Route::get('/moderator/ban', [App\Http\Controllers\ModeratorController::class, 'ban'])->name('moderator.ban');
 Route::post('/moderator/ban', [App\Http\Controllers\ModeratorController::class, 'banuser'])->name('moderator.banuser');
+Route::get('/moderator/unban', [App\Http\Controllers\ModeratorController::class, 'unban'])->name('moderator.unban');
+Route::post('/moderator/unban', [App\Http\Controllers\ModeratorController::class, 'unbanuser'])->name('moderator.unbanuser');
 Route::get('/moderator/banlist', [App\Http\Controllers\ModeratorController::class, 'banlist'])->name('moderator.banlist');
 Route::get('/admin/truncategametokens', [App\Http\Controllers\AdminController::class, 'truncategametokens'])->name('admin.truncategametokens');
 Route::get('/admin/truncateservers', [App\Http\Controllers\AdminController::class, 'truncateservers'])->name('admin.truncateservers');

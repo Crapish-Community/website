@@ -20,7 +20,7 @@
 				<h3 class="text-muted">Users</h3>
 				<li><a href="{{ route('moderator.banlist') }}">Ban List</a></li>
 				<li><a href="{{ route('moderator.ban') }}">Ban User</a></li>
-				<li><a href="{{ route('admin.unban') }}">Unban User</a></li>
+				<li><a href="{{ route('moderator.unban') }}">Unban User</a></li>
 			</div>
 			
 			<div class="col-sm-3 my-2">

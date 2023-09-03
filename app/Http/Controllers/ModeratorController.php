@@ -79,4 +79,37 @@ class ModeratorController extends Controller
 
         return redirect('/moderator/ban')->with('success', $user->username . '  has been banned until ' . $ban->banned_until);
     }
+
+    public function unban(Request $request) {
+        return view('admin.unban');
+    }
+
+    public function unbanuser(Request $request) {
+        $request->validate([
+            'username' => ['required', 'string']
+        ]);
+
+        $user = User::where('username', $request['username'])->first();
+        $ban = Ban::where(['user_id' => $user->id, 'banned' => true])->first();
+
+        if (!$user) {
+            return redirect('/moderator/unban')->with('error', 'That user does not exist. Name: ' . $request['username']);
+        }
+
+        if (!$ban) {
+            return redirect('/moderator/unban')->with('error', 'That user is not banned.');
+        }
+
+        if ($request->user()->id == $user->id) {
+            return redirect('/moderator/unban')->with('error', 'but... but... but... you are not banned......');
+        }
+
+        $ban->banned = false;
+        $ban->pardon_user_id = $request->user()->id;
+        $ban->save();
+
+        AdminLog::log($request->user(), sprintf('Unbanned user %s. (USER ID: %s)', $ban->user->username, $ban->user->id));
+
+        return redirect('/moderator/unban')->with('success', $user->username . '  has been unbanned.');
+    }
 }

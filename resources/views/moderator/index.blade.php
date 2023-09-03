@@ -25,7 +25,6 @@
 			
 			<div class="col-sm-3 my-2">
 				<h3 class="text-muted">Site</h3>
-				<li><a href="{{ route('admin.sitealert') }}">Create Site Alert</a></li>
 				<li><a href="{{ route('admin.invitekeys') }}">Manage Existing Invite Keys</a></li>
 				<li><a href="{{ route('admin.createinvitekey') }}">Create New Invite Key</a></li>
 			</div>

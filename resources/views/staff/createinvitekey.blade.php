@@ -5,7 +5,13 @@
 @section('content')
 <div class="container">
     <h1><b>Generate Invite Key</b></h1>
-    <p>Used for inviting new users to {{ config('app.name') }}. Inviting random or unknown people is not permitted.<br>Minimum uses: 1<br>Maximum uses: 50</p>
+    <p>Used for inviting new users to {{ config('app.name') }}. Inviting random or unknown people is not permitted.<br>Minimum uses: 1<br>
+        @if (Auth::user()->isAdmin())
+        Maximum uses: 50
+        @else
+        Maximum uses: 10
+        @endif
+    </p>
     <hr>
     @if (session()->has('error'))
         <div class="alert alert-danger">

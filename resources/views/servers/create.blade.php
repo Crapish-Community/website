@@ -187,7 +187,7 @@
                     <ul>
                         <li>First we will go to <a href="https://playit.gg/">playit</a> and make an account.</li>
                         <li>We will want to make a tunnel by going to the tunnels tab and clicking add tunnel. For the tunnel type we will want TCP + UDP.</li>
-                        <li>The port count of the tunnel will be 1 and the local port can be left as default.</li>
+                        <li>The port count of the tunnel will be 1 and the local port can be anything as we will change it later.</li>
                         <li>After the tunnel is created, go to the configuration page of the tunnel.</li>
                         <li>You must then grab the port assigned to your tunnel, scroll down and paste it inside "Local Port". After that, click save.</li>
                         <li>Then you can go to downloads and download the playit program and run it. Make sure to authorise it with your account.</li>

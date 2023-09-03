@@ -17,4 +17,21 @@ class ModeratorController extends Controller
     {
         return view('moderator.index');
     }
+
+    public function ban(Request $request) {        
+        return view('moderator.ban');
+    }
+
+    
+    public function banlist(Request $request)
+    {
+        $bans = Ban::query();
+        if (request('search')) {
+            $users = User::where('username', 'LIKE', '%' . request('search') . '%')->get();
+            if($users) {
+                $bans->whereIn('user_id', $users->pluck('id'))->orderBy('updated_at', 'desc');
+            }
+        }
+        return view('admin.banlist')->with(['bans' => $bans->orderBy('updated_at', 'DESC')->paginate(10)->appends($request->all())]);
+    }
 }

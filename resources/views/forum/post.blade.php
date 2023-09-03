@@ -75,11 +75,11 @@
                             <div class="col-md-2">
                                 <div class="d-block d-md-inline-block">
                                     <span class="text-{{(Cache::has('last_online' . $post->user->id) ? 'primary' : 'secondary')}} d-inline-block"><i style="font-size: 50%" class="fas fa-circle align-middle mr-1"></i></span>
-                                    <p class="m-0 d-inline-block"><a @if ($post->user->isStaff()) class="font-weight-bold text-danger" @endif href="{{ route('users.profile', $post->user->id) }}">{{ $post->user->username }}</a></p>
+                                    <p class="m-0 d-inline-block"><a @if ($post->user->isAdmin()) class="font-weight-bold text-danger" @endif href="{{ route('users.profile', $post->user->id) }}">{{ $post->user->username }}</a></p>
                                 </div>
                                 <br>
                                 <img class="img-fluid" style="max-height: 128px;" data-tadah-thumbnail-id="{{ $post->user->id }}" data-tadah-thumbnail-type="user-thumbnail" src="{{ asset('images/thumbnail/blank.png') }}" alt="{{ $post->user->username }}">
-                                <p class="m-0">@if ($post->user->isStaff()) <p class="text-danger mt-0 mb-0 font-weight-bold"><i class="fas fa-shield mr-1"></i>Administrator</p> @endif Joined: <p class="text-muted d-inline">{{ date('m/d/Y', strtotime($post->user->joined)) }}</p><br>Posts: <p class="text-muted d-inline">{{ $post->user->countPosts() }}</p></p>
+                                <p class="m-0">@if ($post->user->isAdmin()) <p class="text-danger mt-0 mb-0 font-weight-bold"><i class="fas fa-shield mr-1"></i>Administrator</p> @endif Joined: <p class="text-muted d-inline">{{ date('m/d/Y', strtotime($post->user->joined)) }}</p><br>Posts: <p class="text-muted d-inline">{{ $post->user->countPosts() }}</p></p>
                             </div>
                             <div class="col-md-10">
                                 <p class="text-muted mb-0"><small>Posted on {{ date('F j, Y, g:i A', strtotime($post->created_at)) }} ({{ $post->created_at->diffForHumans() }})</small></p>

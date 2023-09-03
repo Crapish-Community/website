@@ -104,6 +104,19 @@
                             </a>
                         </li>
                         @endadmin
+                        @moderator
+                        <li class="nav-item mr-1">
+                            <a class="nav-link" href="{{ route('moderator.index') }}">
+                                {{ __('Moderator') }}
+                                @php ($unapproved = \App\Models\Item::where('approved', 0)->count()) @endphp
+                                @if($unapproved > 0)
+                                <span class="badge badge-light badge-pill ml-1">
+                                    {{ $unapproved }}
+                                </span>
+                                @endif
+                            </a>
+                        </li>
+                        @endmoderator
                         @endif
                         @guest
                         @if (Route::has('login'))

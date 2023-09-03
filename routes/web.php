@@ -124,6 +124,7 @@ Route::middleware('auth')->group(function() {
 
 // Admin routes
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
+Route::get('/moderator', [App\Http\Controllers\ModeratorController::class, 'index'])->name('moderator.index');
 Route::get('/admin/truncategametokens', [App\Http\Controllers\AdminController::class, 'truncategametokens'])->name('admin.truncategametokens');
 Route::get('/admin/truncateservers', [App\Http\Controllers\AdminController::class, 'truncateservers'])->name('admin.truncateservers');
 Route::get('/admin/invitekeys', [App\Http\Controllers\AdminController::class, 'invitekeys'])->name('admin.invitekeys');

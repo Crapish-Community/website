@@ -56,7 +56,7 @@
                             </div>
                         @endif
                         @if (Auth::user()->isStaff() && Auth::user()->id != $user->id && !$user->isStaff())
-                          @if($ban = Ban::where(['user_id' => $user->id, 'banned' => true])->first();)
+                          @if($ban = Ban::where(['user_id' => $user->id, 'banned' => true])->first())
                             <div class="col-auto px-1">
                                 <a class="btn btn-danger" style="display:inline-block;" href="{{ route('staff.unbanuser', ['username' => $user->username]) }}"><i class="fas fa-hammer me-1" aria-hidden="false"></i>Unban</a>
                             </div>

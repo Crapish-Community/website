@@ -13,7 +13,6 @@
 				<h3 class="text-muted">Assets</h3>
 				<li><a href="{{ route('moderator.assets') }}">Asset Approval</a></li>
 				<li><a href="{{ route('admin.xmlitem') }}">New XML Item</a></li>
-				<li><a href="{{ route('admin.renderasset') }}">Re-render Asset</a></li>
 			</div>
 			
 			<div class="col-sm-3 my-2">

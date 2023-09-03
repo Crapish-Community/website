@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
 use App\Models\AdminLog;
+use App\Models\Item;
 use App\Models\Ban;
 use Carbon\Carbon;
 use Log;
@@ -111,5 +112,29 @@ class ModeratorController extends Controller
         AdminLog::log($request->user(), sprintf('Unbanned user %s. (USER ID: %s)', $ban->user->username, $ban->user->id));
 
         return redirect('/moderator/unban')->with('success', $user->username . '  has been unbanned.');
+    }
+
+    function assets(Request $request) {
+        $unapproved = Item::where('approved', 0);
+        if (request('search')) {
+            $unapproved->where('name', 'LIKE', '%' . request('search') . '%');
+        }
+        return view('admin.assets', ['items' => $unapproved->paginate(18)]);
+    }
+
+    function approve(Request $request, $id) {
+        $item = Item::find($id);        
+        if($item) {
+			$approved = ($request->submit === 'Approve');
+            $item->update([
+                'approved' => ($approved ? 1 : 2),
+            ]);
+
+            AdminLog::log($request->user(), sprintf('%s asset %s. (ITEM ID: %s)', ($approved ? 'Approved' : 'Denied'), $item->name, $item->id));
+        } else {
+            abort(404);
+        }
+
+        return back();
     }
 }

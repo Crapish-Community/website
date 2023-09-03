@@ -129,6 +129,8 @@ Route::get('/moderator/ban', [App\Http\Controllers\ModeratorController::class, '
 Route::post('/moderator/ban', [App\Http\Controllers\ModeratorController::class, 'banuser'])->name('moderator.banuser');
 Route::get('/moderator/unban', [App\Http\Controllers\ModeratorController::class, 'unban'])->name('moderator.unban');
 Route::post('/moderator/unban', [App\Http\Controllers\ModeratorController::class, 'unbanuser'])->name('moderator.unbanuser');
+Route::get('/moderator/assets', [App\Http\Controllers\ModeratorController::class, 'assets'])->name('moderator.assets');
+Route::post('/moderator/{id}/approve', [App\Http\Controllers\ModeratorController::class, 'approve'])->name('moderator.approve');
 Route::get('/moderator/banlist', [App\Http\Controllers\ModeratorController::class, 'banlist'])->name('moderator.banlist');
 Route::get('/admin/truncategametokens', [App\Http\Controllers\AdminController::class, 'truncategametokens'])->name('admin.truncategametokens');
 Route::get('/admin/truncateservers', [App\Http\Controllers\AdminController::class, 'truncateservers'])->name('admin.truncateservers');

@@ -5,8 +5,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
+use App\Models\AdminLog;
 use App\Models\Ban;
 use Carbon\Carbon;
+use Log;
 
 class ModeratorController extends Controller
 {

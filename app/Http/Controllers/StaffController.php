@@ -290,7 +290,7 @@ class StaffController extends Controller
         }
         else if($request->user()->admin == 1) {
             $request->validate([
-                'uses' => ['required', 'min:1', 'max:15', 'integer']
+                'uses' => ['required', 'min:1', 'max:50', 'integer']
             ]);
         }
 

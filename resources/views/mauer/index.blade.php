@@ -41,7 +41,7 @@
                 {{ (new DateTime($scribble->created_at, new DateTimeZone(config('app.timezone'))))->format('Y-m-d g:i A ') . config('app.timezone') }}
                 <span class="mx-2">|</span>
                 <i>{{ $scribble->title }}</i>
-                @if (Auth::check() && ((Auth::user()->scribbler && Auth::user()->id == $scribble->user_id) || Auth::user()->isStaff()))
+                @if (Auth::check() && ((Auth::user()->scribbler && Auth::user()->id == $scribble->user_id) || Auth::user()->isAdmin()))
                     <a href="{{ route('mauer.edit', $scribble->id) }}" class="ml-1">(edit)</a>
                 @endif
             </p>

@@ -60,7 +60,7 @@
                         @endif
                         @if (Auth::user()->isModerator())
                             <div class="col-auto px-1">
-                                <a class="btn btn-danger" style="display:inline-block;" href="{{ route('mod.banuser', ['username' => $user->username]) }}"><i class="fas fa-hammer me-1" aria-hidden="false"></i>Ban</a>
+                                <a class="btn btn-danger" style="display:inline-block;" href="{{ route('staff.banuser', ['username' => $user->username]) }}"><i class="fas fa-hammer me-1" aria-hidden="false"></i>Ban</a>
                             </div>
                         @endif
                         @if($user->id != Auth::user()->id)

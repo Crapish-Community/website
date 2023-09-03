@@ -14,7 +14,7 @@
 
     <div class="d-flex justify-content-between">
         <h1>Die Mauer</h1>
-        @if (Auth::check() && (Auth::user()->scribbler || Auth::user()->isAdmin()))
+        @if (Auth::check() && (Auth::user()->scribbler || Auth::user()->isStaff()))
             <div class="d-flex align-items-center">
                 <a class="btn btn-success" href="{{ route('mauer.scribble') }}">
                     <i class="fas fa-pencil me-1"></i>

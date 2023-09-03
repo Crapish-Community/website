@@ -29,7 +29,7 @@
                     <td><a href="{{ route('users.profile', $associatedUser->id) }}">{{ $associatedUser->username }}</a></td>
                     <td>{{ $associatedUser->invite_key }}</td>
                     <td>{{ date('m/d/Y ', strtotime($associatedUser->joined)) }}</td>
-                    <td><a href="{{ route('admin.banuser', ['username' => $associatedUser->username]) }}" class="btn btn-danger btn-sm shadow-sm"><i class="fas fa-gavel"></i></button></td>
+                    <td><a href="{{ route('staff.banuser', ['username' => $associatedUser->username]) }}" class="btn btn-danger btn-sm shadow-sm"><i class="fas fa-gavel"></i></button></td>
                 </tr>
             @endforeach
         </tbody>

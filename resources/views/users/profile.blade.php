@@ -55,16 +55,10 @@
                                 <a class="btn btn-secondary" style="display:inline-block;" href="{{ route('admin.alts', $user->id) }}"><i class="fas fa-eye me-1" aria-hidden="true"></i>View Alts</a>
                             </div>
                         @endif
-                        @if (Auth::user()->isStaff() && Auth::user()->id != $user->id && !$user->isStaff())
-                          @if(Ban::where(['user_id' => $user->id, 'banned' => true])->first())
-                            <div class="col-auto px-1">
+                        @if (Auth::user()->isStaff() && Auth::user()->id != $user->id && !$user->isStaff())                            
+                        <div class="col-auto px-1">
                                 <a class="btn btn-danger" style="display:inline-block;" href="{{ route('staff.unbanuser', ['username' => $user->username]) }}"><i class="fas fa-hammer me-1" aria-hidden="false"></i>Unban</a>
                             </div>
-                            @else
-                            <div class="col-auto px-1">
-                                <a class="btn btn-danger" style="display:inline-block;" href="{{ route('staff.banuser', ['username' => $user->username]) }}"><i class="fas fa-hammer me-1" aria-hidden="false"></i>Ban</a>
-                            </div>
-                        @endif
                         @endif
                         @if($user->id != Auth::user()->id)
                         @php

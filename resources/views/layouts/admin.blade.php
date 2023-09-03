@@ -155,7 +155,7 @@
                                 </a>
                                 @endadmin
                                 @if (Auth::user()->isModerator())
-                                <a class="dropdown-item" href="/moderator">
+                                <a class="dropdown-item" href="/staff">
                                     <i class="fas fa-hammer mr-1"></i>{{ __('Moderator') }}
                                 </a>
                                 @endif

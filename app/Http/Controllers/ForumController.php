@@ -64,7 +64,7 @@ class ForumController extends Controller
             return redirect(route('forum.createthread', $category->id))->with('error', 'Posts can only be made every ' . config('app.posting_cooldown') . ' seconds.');
         }
 
-        $max = ($request->user()->isAdmin() ? 'max:2147483647' : 'max:2000');
+        $max = ($request->user()->isStaff() ? 'max:2147483647' : 'max:2000');
 
         $request->validate([
             'title' => ['required', 'string', 'max:100', 'not_regex:/[\xCC\xCD]/'],
@@ -105,7 +105,7 @@ class ForumController extends Controller
             abort(404);
         }
 
-        if(!$request->user()->isAdmin() && $request->user()->id != $thread->user_id) {
+        if(!$request->user()->isStaff() && $request->user()->id != $thread->user_id) {
             abort(404);
         }
 
@@ -124,11 +124,11 @@ class ForumController extends Controller
             abort(404);
         }
 
-        if(!$request->user()->isAdmin() && $request->user()->id != $thread->user_id) {
+        if(!$request->user()->isStaff() && $request->user()->id != $thread->user_id) {
             abort(404);
         }
 
-        $max = ($request->user()->isAdmin() ? 'max:2147483647' : 'max:2000');
+        $max = ($request->user()->isStaff() ? 'max:2147483647' : 'max:2000');
 
         $request->validate([
             'title' => ['required', 'string', 'max:100', 'not_regex:/[\xCC\xCD]/'],
@@ -141,7 +141,7 @@ class ForumController extends Controller
 
         $thread->category->touch();
 
-        if ($request->user()->isAdmin()) {
+        if ($request->user()->isStaff()) {
             AdminLog::log($request->user(), sprintf('Edited thread "%s". (THREAD ID: %s)', $thread->title, $thread->id));
         }
 
@@ -150,7 +150,7 @@ class ForumController extends Controller
 
     public function deletethread(Request $request, $id)
     {
-        if (!$request->user()->isAdmin()) {
+        if (!$request->user()->isStaff()) {
             abort(404);
         }
 
@@ -161,7 +161,7 @@ class ForumController extends Controller
             $reply->delete();
         }
 
-        if ($request->user()->isAdmin()) {
+        if ($request->user()->isStaff()) {
             AdminLog::log($request->user(), sprintf('Deleted thread "%s". (THREAD ID: %s)', $thread->title, $thread->id));
         }
 
@@ -172,7 +172,7 @@ class ForumController extends Controller
 
     public function togglestickythread(Request $request, $id)
     {
-        if (!$request->user()->isAdmin()) {
+        if (!$request->user()->isStaff()) {
             abort(404);
         }
 
@@ -181,7 +181,7 @@ class ForumController extends Controller
         $thread->stickied = !$thread->stickied;
         $thread->save();
 
-        if ($request->user()->isAdmin()) {
+        if ($request->user()->isStaff()) {
             AdminLog::log($request->user(), sprintf('Stickied thread "%s". (THREAD ID: %s)', $thread->title, $thread->id));
         }
 
@@ -190,7 +190,7 @@ class ForumController extends Controller
 
     public function togglelock(Request $request, $id)
     {
-        if (!$request->user()->isAdmin()) {
+        if (!$request->user()->isStaff()) {
             abort(404);
         }
 
@@ -199,7 +199,7 @@ class ForumController extends Controller
         $thread->locked = !$thread->locked;
         $thread->save();
 
-        if ($request->user()->isAdmin()) {
+        if ($request->user()->isStaff()) {
             AdminLog::log($request->user(), sprintf('Locked thread "%s". (THREAD ID: %s)', $thread->title, $thread->id));
         }
 
@@ -259,7 +259,7 @@ class ForumController extends Controller
 
     public function editreply(Request $request, $id)
     {
-        if (!$request->user()->isAdmin()) {
+        if (!$request->user()->isStaff()) {
             abort(404);
         }
 
@@ -270,7 +270,7 @@ class ForumController extends Controller
 
     public function doeditreply(Request $request, $id)
     {
-        if (!$request->user()->isAdmin()) {
+        if (!$request->user()->isStaff()) {
             abort(404);
         }
 
@@ -285,7 +285,7 @@ class ForumController extends Controller
 
         $reply->category->touch();
 
-        if ($request->user()->isAdmin()) {
+        if ($request->user()->isStaff()) {
             AdminLog::log($request->user(), sprintf('Edited reply by %s. (USER ID: ) (REPLY ID: )', $reply->user->username, $reply->user->id, $reply->id));
         }
 
@@ -301,7 +301,7 @@ class ForumController extends Controller
         $reply = ForumPost::findOrFail($id);
         $thread = $reply->thread;
 
-        if ($request->user()->isAdmin()) {
+        if ($request->user()->isStaff()) {
             AdminLog::log($request->user(), sprintf('Deleted reply by %s. (USER ID: ) (REPLY ID: )', $reply->user->username, $reply->user->id, $reply->id));
         }
 

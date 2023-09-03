@@ -258,4 +258,20 @@ class ModeratorController extends Controller
 
         return redirect(route('item.view', $item->id))->with('message', ($shouldHatch ? 'XML asset successfully created and scheduled to hatch.' : 'XML asset successfully created.'));
     }
+
+    public function robloxitemdata(Request $request, $id)
+    {
+        $response = Http::asForm()->get('https://api.roblox.com/marketplace/productinfo', [
+            "assetId" => $id
+        ]);
+
+        return $response;
+    }
+
+    public function robloxxmldata(Request $request, $id, $version)
+    {
+        $response = Http::get('https://assetdelivery.roblox.com/v1/asset?id=' . intval($id) . "&version=" . intval($version));
+
+        return $response;
+    }
 }

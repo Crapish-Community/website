@@ -190,7 +190,12 @@
     $('#robloxItemInfo').click(function(event) {
         $.ajax({
             type: "GET",
+            @admin
             url: "/admin/robloxitemdata/" + $('#robloxid').val(),
+            @endadmin
+            @if (Auth::user()->isModerator())
+            url: "/moderator/robloxitemdata/" + $('#robloxid').val(),
+            @endif
             dataType: "json",
             success: function (data) {
                 $("#itemname").val(data["Name"]);
@@ -200,7 +205,12 @@
 
         $.ajax({
             type: "GET",
+            @admin
             url: "/admin/robloxxmldata/" + $('#robloxid').val() + "/" + $('#robloxversion').val(),
+            @endadmin
+            @if (Auth::user()->isModerator())
+            url: "/moderator/robloxxmldata/" + $('#robloxid').val() + "/" + $('#robloxversion').val(),
+            @endif
             success: function (data){
                 $("#xml").html(data.replaceAll("http://www.roblox.com/asset", "http://crapish.fun/asset").replaceAll("class=\"Accessory\"", "class=\"Hat\""));
             }

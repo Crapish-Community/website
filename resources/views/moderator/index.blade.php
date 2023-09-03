@@ -7,5 +7,28 @@
 @section('content')
 <div class="container admin-panel">
     <h1><b>Moderator Panel</b></h1>
+
+    <div class="row">
+			<div class="col-sm-3 my-2">
+				<h3 class="text-muted">Assets</h3>
+				<li><a href="{{ route('moderator.assets') }}">Asset Approval</a></li>
+				<li><a href="{{ route('moderator.xmlitem') }}">New XML Item</a></li>
+				<li><a href="{{ route('moderator.renderasset') }}">Re-render Asset</a></li>
+			</div>
+			
+			<div class="col-sm-3 my-2">
+				<h3 class="text-muted">Users</h3>
+				<li><a href="{{ route('moderator.banlist') }}">Ban List</a></li>
+				<li><a href="{{ route('moderator.ban') }}">Ban User</a></li>
+				<li><a href="{{ route('moderator.unban') }}">Unban User</a></li>
+			</div>
+			
+			<div class="col-sm-3 my-2">
+				<h3 class="text-muted">Site</h3>
+				<li><a href="{{ route('moderator.sitealert') }}">Create Site Alert</a></li>
+				<li><a href="{{ route('moderator.invitekeys') }}">Manage Existing Invite Keys</a></li>
+				<li><a href="{{ route('moderator.createinvitekey') }}">Create New Invite Key</a></li>
+			</div>
+	</div>
 </div>
 @endsection

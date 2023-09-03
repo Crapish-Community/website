@@ -546,7 +546,7 @@ class AdminController extends Controller
             return redirect(route('admin.moderator'))->with('error', 'That user does not exist. Name: ' . $request['username']);
         }
 
-        $user->isModerator = !$user->isModerator;
+        $user->moderator = !$moderator->moderator;
         $user->save();
 
         AdminLog::log($request->user(), sprintf('Toggled Moderator status for user %s. (USER ID: %s)', $user->username, $user->id), true);

@@ -54,12 +54,12 @@
                             <td class="align-middle">
                                 @if ($user->isAdmin())
                                     <a href="{{ route('users.profile', $user->id) }}" class="text-danger font-weight-bold"><i class="fas fa-shield mr-1"></i>{{ $user->username }}</a>
-				@elseif ($user->donator && !$user->isEventStaff())
+				                @elseif ($user->donator && !$user->isEventStaff())
                                     <a href="{{ route('users.profile', $user->id) }}" class="text-donator font-weight-bold"><i class="fas fa-gem mr-1"></i>{{ $user->username }}</a>
-                                @elseif ($user->booster && !$user->isEventStaff())
-                                    <a href="{{ route('users.profile', $user->id) }}" class="text-booster font-weight-bold"><i class="fas fa-hard-hat mr-1"></i>{{ $user->username }}</a>
                                 @elseif($user->isEventStaff() || $user->isModerator())                        
                                     <a href="{{ route('users.profile', $user->id) }}" class="text-success font-weight-bold"><i class="fas fa-user-shield mr-1"></i>{{ $user->username }}</a>
+                                @elseif ($user->booster && !$user->isEventStaff())
+                                    <a href="{{ route('users.profile', $user->id) }}" class="text-booster font-weight-bold"><i class="fas fa-hard-hat mr-1"></i>{{ $user->username }}</a>
                                 @else
                                     <a href="{{ route('users.profile', $user->id) }}">{{ $user->username }}</a>
                                 @endif

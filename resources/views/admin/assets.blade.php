@@ -82,7 +82,7 @@
 											<button style="width: 50%" type="submit" name="submit" class="btn btn-sm btn-secondary" value="Deny">Deny</button>
 										</div>
 									</form>
-									<a href="ban/?username={{ $item->user->username }}" class="btn-sm btn btn-danger mt-1">Moderate User</a>
+									<a href="ban?username={{ $item->user->username }}" class="btn-sm btn btn-danger mt-1">Moderate User</a>
 								@endif
 						   </div>
                         </div>

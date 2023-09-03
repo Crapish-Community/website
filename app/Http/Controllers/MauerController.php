@@ -45,7 +45,7 @@ class MauerController extends Controller
         $scribble = MauerScribble::findOrFail($id);
         $user = $request->user();
 
-        if (!$user->isAdmin() && ($user->id != $scribble->user_id || !$user->scribbler))
+        if (!$user->isStaff() && ($user->id != $scribble->user_id || !$user->scribbler))
         {
             abort(403);
         }

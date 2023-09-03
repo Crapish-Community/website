@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="alert alert-primary">
-                <i class="fas fa-info mr-1"></i> If you don't know how to host, follow <button data-toggle="modal" data-target="#guideModal">this guide</button>.
+                <i class="fas fa-info mr-1"></i> If you don't know how to host, follow <button type="button" class="btn btn-link" data-toggle="modal" data-target="#guideModal">this guide</button>.
             </div>
             <div class="card shadow-sm">
                 <div class="card-header">{{ __('Create Server') }}</div>
@@ -172,7 +172,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="wearingItems" tabindex="-1" role="dialog" aria-labelledby="wearingItemsLbl">
+    <div class="modal fade" id="guideModal" tabindex="-1" role="dialog" aria-labelledby="guideModalLbl">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">

@@ -185,14 +185,14 @@
                     <p class="p-0 m-0 w-100 d-flex text-muted">To host a server you can either port forward or use playit.</p>
                     <p class="p-0 m-0 w-100 d-flex text-muted">This guide will focus on using playit as it will be the most common form of hosting.</p>
                     <ul>
-                        <li>First we will go to playit and make an account.</li>
+                        <li>First we will go to <a href="https://playit.gg/">playit</a> and make an account.</li>
                         <li>We will want to make a tunnel by going to the tunnels tab and clicking add tunnel. For the tunnel type we will want TCP + UDP.</li>
                         <li>The port count of the tunnel will be 1 and the local port can be left as default.</li>
                         <li>After the tunnel is created, go to the configuration page of the tunnel.</li>
                         <li>You must then grab the port assigned to your tunnel, scroll down and paste it inside "Local Port". After that, click save.</li>
                         <li>Then you can go to downloads and download the playit program and run it. Make sure to authorise it with your account.</li>
                         <li>You can then go back to Crapish. For the IP and port, we will go back to playit and copy them. Leave the loopback IP blank.</li>
-                        <li>Lastly, go on your server page, scroll down and click host server. Make sure you have the Crapish Launcher installed!
+                        <li>Lastly, go on your server page, scroll down and click host server. Make sure you have the <a href="/download">Crapish Launcher</a> installed!
                     </ul>
                     <p class="p-0 m-0 w-100 d-flex text-muted">Then you should be good to go!</p>
                     <p class="p-0 m-0 w-100 d-flex text-muted">Make sure to run playit everytime you host and if you have any problems feel free to send a message to a staff member.</p>                    

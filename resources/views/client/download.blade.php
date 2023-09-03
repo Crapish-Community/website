@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="DownloadMobile" tabindex="-1" aria-labelledby="DownloadedMobileLabel" aria-hidden="true">
+    <div class="modal fade" id="DownloadMobile" tabindex="-2" aria-labelledby="DownloadedMobileLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -102,7 +102,7 @@
 </div>
 </div>
 <script>
-    $(".dl-client").on("click", function() {
+    $(".dl-mobile").on("click", function() {
         $("#DownloadedMobile").modal("show");
     })
     $(".dl-mobile").on("click", function() {

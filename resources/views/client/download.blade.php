@@ -62,11 +62,11 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="DownloadClient" tabindex="-1" aria-labelledby="DownloadedClientLabel" aria-hidden="true">
+    <div class="modal fade" id="DownloadMobile" tabindex="-1" aria-labelledby="DownloadedMobileLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="DownloadedClientLabel">{{ config('app.name') }} Mobile</h5>
+                <h5 class="modal-title" id="DownloadedMobileLabel">{{ config('app.name') }} Mobile</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

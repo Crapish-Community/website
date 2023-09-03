@@ -13,7 +13,7 @@ use App\Models\Ban;
 use Carbon\Carbon;
 use Log;
 
-class ModeratorController extends Controller
+class StaffController extends Controller
 {
     public function __construct()
     {

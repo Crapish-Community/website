@@ -47,8 +47,8 @@
 			
 			<div class="col-sm-3 my-2">
 				<h3 class="text-muted">Assets</h3>
-				<li><a href="{{ route('admin.assets') }}">Asset Approval</a></li>
-				<li><a href="{{ route('admin.xmlitem') }}">New XML Item</a></li>
+				<li><a href="{{ route('staff.assets') }}">Asset Approval</a></li>
+				<li><a href="{{ route('staff.xmlitem') }}">New XML Item</a></li>
 				<li><a href="{{ route('admin.item') }}">Reward Item</a></li>
 				<li><a href="{{ route('admin.wearitem') }}">Force Wear Item</a></li>
 				<li><a href="{{ route('admin.renderasset') }}">Re-render Asset</a></li>
@@ -56,9 +56,9 @@
 			
 			<div class="col-sm-3 my-2">
 				<h3 class="text-muted">Users</h3>
-				<li><a href="{{ route('admin.banlist') }}">Ban List</a></li>
-				<li><a href="{{ route('admin.ban') }}">Ban User</a></li>
-				<li><a href="{{ route('admin.unban') }}">Unban User</a></li>
+				<li><a href="{{ route('staff.banlist') }}">Ban List</a></li>
+				<li><a href="{{ route('staff.ban') }}">Ban User</a></li>
+				<li><a href="{{ route('staff.unban') }}">Unban User</a></li>
 				<li><a href="{{ route('admin.money') }}">Give {{ config('app.currency_name_multiple') }}</a></li>
 				<li><a href="{{ route('admin.booster') }}">Toggle Booster Club</a></li>
 				<li><a href="{{ route('admin.forceunlinkdiscord') }}">Force Unlink Discord</a></li>
@@ -69,8 +69,8 @@
 			<div class="col-sm-3 my-2">
 				<h3 class="text-muted">Site</h3>
 				<li><a href="{{ route('admin.sitealert') }}">Create Site Alert</a></li>
-				<li><a href="{{ route('admin.invitekeys') }}">Manage Existing Invite Keys</a></li>
-				<li><a href="{{ route('admin.createinvitekey') }}">Create New Invite Key</a></li>
+				<li><a href="{{ route('staff.invitekeys') }}">Manage Existing Invite Keys</a></li>
+				<li><a href="{{ route('staff.createinvitekey') }}">Create New Invite Key</a></li>
 			</div>
 			
 			<div class="col-sm-12 my-2">

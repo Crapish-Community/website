@@ -165,7 +165,7 @@ Route::post('/admin/unlinkdiscord', [Controllers\AdminController::class, 'forceu
 Route::get('/admin/log', [Controllers\AdminController::class, 'log'])->name('admin.log');
 Route::get('/admin/hoster', [App\Http\Controllers\AdminController::class, 'hoster'])->name('admin.hoster');
 Route::post('/admin/hoster', [App\Http\Controllers\AdminController::class, 'togglehoster'])->name('admin.togglehoster');
-Route::get('/moderator', [App\Http\Controllers\ModeratorController::class, 'index'])->name('moderator.index');
+Route::get('/staff', [App\Http\Controllers\ModeratorController::class, 'index'])->name('moderator.index');
 
 // Yoo.
 // Servers routes

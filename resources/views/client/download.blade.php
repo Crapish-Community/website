@@ -30,7 +30,7 @@
     </div>
     <div class="text-center">
         <a class="btn btn-lg btn-success dl-client mt-4" style="width: 35%" role="button" href="https://cdn.discordapp.com/attachments/1118772952830328832/1147586539585548338/Crapish-1.0.2.exe">Download Client</a>
-        <a role="button" href="" class="btn btn-lg btn-success dl-mobile mt-4 disabled" style="width: 35%; margin-left: 0.75%">Download Mobile</a>
+        <a role="button" href="" class="btn btn-lg btn-success dl-mobile mt-4" style="width: 35%; margin-left: 0.75%">Download Mobile</a>
     </div>
 </div>
 <div class="modal fade" id="DownloadedClient" tabindex="-1" aria-labelledby="DownloadedClientLabel" aria-hidden="true">

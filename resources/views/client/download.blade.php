@@ -43,7 +43,7 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row text-center">
                         <div class="col">
                             <h2 class="font-weight-normal">1.</h2>
                             <p>Save the file to your computer</p>

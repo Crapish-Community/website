@@ -194,9 +194,7 @@
                         <li>You can then go back to Crapish. For the IP and port, we will go back to playit and copy them. Leave the loopback IP blank.</li>
                         <li>Lastly, go on your server page, scroll down and click host server. Make sure you have the <a href="/download">Crapish Launcher</a> installed!
                     </ul>
-                    <p class="p-0 m-0 w-100 d-flex text-muted">Then you should be good to go!</p>
-                    <br>
-                    <br>
+                    <p class="p-0 m-0 w-100 d-flex text-muted py-2">Then you should be good to go!</p>
                     <p class="p-0 m-0 w-100 d-flex text-muted">Make sure to run playit everytime you host and if you have any problems feel free to send a message to a staff member.</p>                    
                 </div>
             </div>

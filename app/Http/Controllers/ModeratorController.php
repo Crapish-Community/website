@@ -15,6 +15,6 @@ class ModeratorController extends Controller
 
     public function index(Request $request)
     {
-        return view('admin.index');
+        return view('moderator.index');
     }
 }

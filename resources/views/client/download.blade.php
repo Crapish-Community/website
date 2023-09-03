@@ -103,7 +103,7 @@
 </div>
 <script>
     $(".dl-client").on("click", function() {
-        $("#DownloadedClient").modal("show");
+        $("#DownloadedMobile").modal("show");
     })
     $(".dl-mobile").on("click", function() {
         $("#DownloadedMobile").modal("show");

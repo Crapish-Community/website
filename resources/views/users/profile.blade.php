@@ -151,7 +151,7 @@
                     @endif
 
                     @if ($user->verified_hoster)
-                    <small class="d-block font-weight-bold text-info user-select-none"><i class="fas fa-badge-check mr-1"></i>This user is a verified hoster.</small>
+                    <small class="d-block font-weight-bold text-primary user-select-none"><i class="fas fa-badge-check mr-1"></i>This user is a verified hoster.</small>
                     @endif
 
                     @if ($user->donator)

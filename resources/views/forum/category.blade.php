@@ -77,11 +77,11 @@
                                         @endphp
                                         <div class="position-relative">
                                             <a data-toggle="tooltip" data-placement="left" title="{{$post->user->username}}" href="{{route('users.profile', $post->user->id)}}">
-                                                <img data-tadah-thumbnail-id="{{ $post->user->id }}" data-tadah-thumbnail-type="user-headshot" src="{{ asset('images/thumbnail/blank.png') }}" style="border-width: 3px !important; background-color: #c3c3c3" class="rounded-circle @if ($post->user->isAdmin()) border border-danger @endif mr-1" width="45">
+                                                <img data-tadah-thumbnail-id="{{ $post->user->id }}" data-tadah-thumbnail-type="user-headshot" src="{{ asset('images/thumbnail/blank.png') }}" style="border-width: 3px !important; background-color: #c3c3c3" class="rounded-circle @if ($post->user->isAdmin()) border border-danger @endif @if ($post->user->isMod()) border border-success @endif mr-1" width="45">
                                             </a>
                                             @if($latestReply)
                                                 <a data-toggle="tooltip" data-placement="bottom" title="{{$latestReply->user->username}}" href="{{route('users.profile', $latestReply->user->id)}}">
-                                                    <img data-tadah-thumbnail-id="{{ $latestReply->user->id }}" data-tadah-thumbnail-type="user-headshot" src="{{ asset('images/thumbnail/blank.png') }}" style="border-width: 3px !important; background-color: #c3c3c3; bottom: 0; right: 0;" class="position-absolute rounded-circle @if ($latestReply->user->isAdmin()) border border-danger @else status-border @endif mr-1" width="30">
+                                                    <img data-tadah-thumbnail-id="{{ $latestReply->user->id }}" data-tadah-thumbnail-type="user-headshot" src="{{ asset('images/thumbnail/blank.png') }}" style="border-width: 3px !important; background-color: #c3c3c3; bottom: 0; right: 0;" class="position-absolute rounded-circle @if ($latestReply->user->isAdmin()) border border-danger @else status-border @endif @if ($latestReply->user->isMod()) border border-success @else status-border @endif mr-1" width="30">
                                                 </a>
                                             @endif
                                         </div>

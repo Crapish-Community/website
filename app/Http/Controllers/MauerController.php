@@ -15,7 +15,7 @@ class MauerController extends Controller
     public function scribble(Request $request)
     {
         $user = $request->user();
-        if (!$user->scribbler && !$user->isAdmin())
+        if (!$user->scribbler && !$user->isStaff())
         {
             abort(403);
         }

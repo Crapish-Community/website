@@ -196,6 +196,7 @@
                     </ul>
                     <p class="p-0 m-0 w-100 d-flex text-muted">Then you should be good to go!</p>
                     <br>
+                    <br>
                     <p class="p-0 m-0 w-100 d-flex text-muted">Make sure to run playit everytime you host and if you have any problems feel free to send a message to a staff member.</p>                    
                 </div>
             </div>

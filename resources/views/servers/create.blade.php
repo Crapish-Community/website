@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="alert alert-primary">
-                <i class="fas fa-info mr-1"></i> If you don't know how to host, follow <button type="button" class="btn-link" data-toggle="modal" data-target="#guideModal">this guide</button>.
+                <i class="fas fa-info mr-1"></i> If you don't know how to host, follow <button type="button" class="btn-link bg-transparent !p-0" data-toggle="modal" data-target="#guideModal">this guide</button>.
             </div>
             <div class="card shadow-sm">
                 <div class="card-header">{{ __('Create Server') }}</div>
@@ -181,9 +181,9 @@
                     </p>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
-                <div class="row mx-0 py-2">
-                    <p class="p-0 m-0 w-100 d-flex justify-content-center text-muted">To host a server you can either port forward or use playit.</p>
-                    <p class="p-0 m-0 w-100 d-flex justify-content-center text-muted">This guide will focus on using playit as it will be the most common form of hosting.</p>
+                <div class="row mx-0 py-2 px-2">
+                    <p class="p-0 m-0 w-100 d-flex text-muted">To host a server you can either port forward or use playit.</p>
+                    <p class="p-0 m-0 w-100 d-flex text-muted">This guide will focus on using playit as it will be the most common form of hosting.</p>
                     <ul>
                         <li>First we will go to playit and make an account.</li>
                         <li>We will want to make a tunnel by going to the tunnels tab and clicking add tunnel. For the tunnel type we will want TCP + UDP.</li>
@@ -194,8 +194,8 @@
                         <li>You can then go back to Crapish. For the IP and port, we will go back to playit and copy them. Leave the loopback IP blank.</li>
                         <li>Lastly, go on your server page, scroll down and click host server. Make sure you have the Crapish Launcher installed!
                     </ul>
-                    <p class="p-0 m-0 w-100 d-flex justify-content-center text-muted">Then you should be good to go!</p>
-                    <p class="p-0 m-0 w-100 d-flex justify-content-center text-muted">Make sure to run playit everytime you host and if you have any problems feel free to send a message to a staff member.</p>                    
+                    <p class="p-0 m-0 w-100 d-flex text-muted">Then you should be good to go!</p>
+                    <p class="p-0 m-0 w-100 d-flex text-muted">Make sure to run playit everytime you host and if you have any problems feel free to send a message to a staff member.</p>                    
                 </div>
             </div>
         </div>

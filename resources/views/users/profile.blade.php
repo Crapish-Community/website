@@ -51,12 +51,18 @@
                 @if (Auth::check())
                     <div class="row">
                         @if (Auth::user()->isAdmin() && Auth::user()->id != $user->id && !$user->isAdmin())
+                            @if (Auth::user()->isModerator() && Auth::user()->id != $user->id && !$user->isAdmin())
+                            <div class="col-auto px-1">
+                                <a class="btn btn-danger" style="display:inline-block;" href="{{ route('mod.banuser', ['username' => $user->username]) }}"><i class="fas fa-hammer me-1" aria-hidden="true"></i>Ban</a>
+                            </div>
+                        @else
                             <div class="col-auto px-1">
                                 <a class="btn btn-secondary" style="display:inline-block;" href="{{ route('admin.alts', $user->id) }}"><i class="fas fa-eye me-1" aria-hidden="true"></i>View Alts</a>
                             </div>
                             <div class="col-auto px-1">
                                 <a class="btn btn-danger" style="display:inline-block;" href="{{ route('admin.banuser', ['username' => $user->username]) }}"><i class="fas fa-hammer me-1" aria-hidden="true"></i>Ban</a>
                             </div>
+                        @endif
                         @endif
                         @if($user->id != Auth::user()->id)
                         @php
@@ -160,7 +166,7 @@
                     <small class="d-block font-weight-bold text-booster user-select-none"><i class="fas fa-hard-hat mr-1"></i>This user is a Booster Club member.</small>
                     @endif
 
-                    @if (Auth::user()->isAdmin())
+                    @if (Auth::user()->isStaff())
                     <small class="d-block font-weight-bold text-secondary">
                         <i class="fab fa-discord mr-1"></i>
                         @if ($user->discord_id) {{ $user->discord_id }} @else This user has not linked a Discord account. @endif

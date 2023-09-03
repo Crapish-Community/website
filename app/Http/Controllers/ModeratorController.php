@@ -17,11 +17,6 @@ class ModeratorController extends Controller
     {
         return view('moderator.index');
     }
-
-    public function ban(Request $request) {        
-        return view('moderator.ban');
-    }
-
     
     public function banlist(Request $request)
     {

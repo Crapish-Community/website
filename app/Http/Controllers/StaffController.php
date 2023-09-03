@@ -284,7 +284,7 @@ class StaffController extends Controller
 
     public function generateinvitekey(Request $request) {
         $request->validate([
-            'uses' => ['required', 'min:1', 'max:50', 'integer']
+            'uses' => ['required', 'min:1', '@if (Auth::user()->isAdmin())max50:@elsemax:10 @endif', 'integer']
         ]);
 
         $inviteKey = InviteKey::create([

@@ -51,19 +51,19 @@ class StaffController extends Controller
         }
 
         if (!$user) {
-            return redirect('/moderator/ban')->with('error', 'That user does not exist. Name: ' . $request['username']);
+            return redirect('/staff/ban')->with('error', 'That user does not exist. Name: ' . $request['username']);
         }
 
         if ($checkforban) {
-            return redirect('/moderator/ban')->with('error', 'That user is already banned. Reason: ' . $user->ban_reason);
+            return redirect('/staff/ban')->with('error', 'That user is already banned. Reason: ' . $user->ban_reason);
         }
 
         if ($user->isStaff()) {
-            return redirect('/moderator/ban')->with('error', 'If you do not like another staff member, you should probably bring it up.');
+            return redirect('/staff/ban')->with('error', 'If you do not like another staff member, you should probably bring it up.');
         }
 
         if ($request->user()->id == $user->id) {
-            return redirect('/moderator/ban')->with('error', 'You\'re trying to ban yourself?');
+            return redirect('/staff/ban')->with('error', 'You\'re trying to ban yourself?');
         }
 
         $ban = new Ban;
@@ -75,7 +75,7 @@ class StaffController extends Controller
 
         AdminLog::log($request->user(), sprintf('Banned user %s. (USER ID: %s)', $ban->user->username, $ban->user->id));
 
-        return redirect('/moderator/ban')->with('success', $user->username . '  has been banned until ' . $ban->banned_until);
+        return redirect('/staff/ban')->with('success', $user->username . '  has been banned until ' . $ban->banned_until);
     }
 
     public function unban(Request $request) {
@@ -91,15 +91,15 @@ class StaffController extends Controller
         $ban = Ban::where(['user_id' => $user->id, 'banned' => true])->first();
 
         if (!$user) {
-            return redirect('/moderator/unban')->with('error', 'That user does not exist. Name: ' . $request['username']);
+            return redirect('/staff/unban')->with('error', 'That user does not exist. Name: ' . $request['username']);
         }
 
         if (!$ban) {
-            return redirect('/moderator/unban')->with('error', 'That user is not banned.');
+            return redirect('/staff/unban')->with('error', 'That user is not banned.');
         }
 
         if ($request->user()->id == $user->id) {
-            return redirect('/moderator/unban')->with('error', 'but... but... but... you are not banned......');
+            return redirect('/staff/unban')->with('error', 'but... but... but... you are not banned......');
         }
 
         $ban->banned = false;
@@ -108,7 +108,7 @@ class StaffController extends Controller
 
         AdminLog::log($request->user(), sprintf('Unbanned user %s. (USER ID: %s)', $ban->user->username, $ban->user->id));
 
-        return redirect('/moderator/unban')->with('success', $user->username . '  has been unbanned.');
+        return redirect('/staff/unban')->with('success', $user->username . '  has been unbanned.');
     }
 
     function assets(Request $request) {
@@ -295,7 +295,7 @@ class StaffController extends Controller
 
         AdminLog::log($request->user(), sprintf('Created invite key %s with %s uses.', $inviteKey->token, $inviteKey->uses));
 
-        return redirect('/moderator/createinvitekey')->with('success', 'Created invite key. Key: "' . $inviteKey->token  . '"');
+        return redirect('/staff/createinvitekey')->with('success', 'Created invite key. Key: "' . $inviteKey->token  . '"');
     }
 
     public function disableinvitekey(Request $request, $id) {
@@ -310,6 +310,6 @@ class StaffController extends Controller
 
         AdminLog::log($request->user(), sprintf('Disabled invite key %s.', $invitekey->token));
 
-        return redirect('/moderator/invitekeys')->with('message', 'Invite key ID: ' . $invitekey->id . ', Token: ' . $invitekey->token . ' disabled.');
+        return redirect('/staff/invitekeys')->with('message', 'Invite key ID: ' . $invitekey->id . ', Token: ' . $invitekey->token . ' disabled.');
     }
 }

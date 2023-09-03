@@ -30,11 +30,11 @@ class StaffController extends Controller
                 $bans->whereIn('user_id', $users->pluck('id'))->orderBy('updated_at', 'desc');
             }
         }
-        return view('admin.banlist')->with(['bans' => $bans->orderBy('updated_at', 'DESC')->paginate(10)->appends($request->all())]);
+        return view('staff.banlist')->with(['bans' => $bans->orderBy('updated_at', 'DESC')->paginate(10)->appends($request->all())]);
     }
 
     public function ban(Request $request) {        
-        return view('admin.ban');
+        return view('staff.ban');
     }
 
     public function banuser(Request $request) {
@@ -79,7 +79,7 @@ class StaffController extends Controller
     }
 
     public function unban(Request $request) {
-        return view('admin.unban');
+        return view('staff.unban');
     }
 
     public function unbanuser(Request $request) {
@@ -116,7 +116,7 @@ class StaffController extends Controller
         if (request('search')) {
             $unapproved->where('name', 'LIKE', '%' . request('search') . '%');
         }
-        return view('admin.assets', ['items' => $unapproved->paginate(18)]);
+        return view('staff.assets', ['items' => $unapproved->paginate(18)]);
     }
 
     function approve(Request $request, $id) {
@@ -137,7 +137,7 @@ class StaffController extends Controller
 
     public function xmlitem(Request $request)
     {
-        return view('admin.newxmlitem');
+        return view('staff.newxmlitem');
     }
 
     public function createxmlitem(Request $request)
@@ -275,11 +275,11 @@ class StaffController extends Controller
     public function invitekeys(Request $request) {
         $invitekeys = InviteKey::query();
 
-        return view('admin.invitekeys')->with('invitekeys', $invitekeys->orderBy('created_at', 'DESC')->paginate(10)->appends($request->all()));
+        return view('staff.invitekeys')->with('invitekeys', $invitekeys->orderBy('created_at', 'DESC')->paginate(10)->appends($request->all()));
     }
 
     public function createinvitekey(Request $request) {
-        return view('admin.createinvitekey');
+        return view('staff.createinvitekey');
     }
 
     public function generateinvitekey(Request $request) {

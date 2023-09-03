@@ -31,12 +31,12 @@
                         <h2 class="font-weight-bold d-block d-md-inline-block text-center text-md-left text-danger px-3"><i class="fas fa-shield mr-2"></i>{{ $user->username }}</h2>
                     @elseif($user->donator && !$user->isEventStaff())
                         <h2 class="font-weight-bold d-block d-md-inline-block text-center text-md-left text-donator px-3"><i class="fas fa-gem mr-2"></i>{{ $user->username }}</h2>
+                    @elseif($user->isEventStaff() || $user->isModerator())
+                        <h2 class="font-weight-bold d-block d-md-inline-block text-center text-md-left text-success px-3"><i class="fas fa-user-shield mr-2"></i>{{ $user->username }}</h2>
                     @elseif($user->booster && !$user->isEventStaff())
                         <h2 class="font-weight-bold d-block d-md-inline-block text-center text-md-left text-booster px-3"><i class="fas fa-hard-hat mr-2"></i>{{ $user->username }}</h2>
                     @elseif($user->verified_hoster && !$user->isEventStaff())
                         <h2 class="font-weight-bold d-block d-md-inline-block text-center text-md-left text-info px-3"><i class="fas fa-badge-check mr-2"></i>{{ $user->username }}</h2>
-                    @elseif($user->isEventStaff() || $user->isModerator())
-                        <h2 class="font-weight-bold d-block d-md-inline-block text-center text-md-left text-success px-3"><i class="fas fa-user-shield mr-2"></i>{{ $user->username }}</h2>
                     @else
                         <h2 class="font-weight-bold d-block d-md-inline-block text-center text-md-left px-3">{{ $user->username }}</h2>
                     @endif

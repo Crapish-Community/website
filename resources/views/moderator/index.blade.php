@@ -7,7 +7,7 @@
 @section('content')
 <div class="container admin-panel">
     <h1><b>Moderator Panel</b></h1>
-
+<hr>
     <div class="row">
 			<div class="col-sm-3 my-2">
 				<h3 class="text-muted">Assets</h3>

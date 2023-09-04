@@ -135,9 +135,8 @@ class CatalogController extends Controller
     {
         $item = Item::findOrFail($id);
 
-        if($item->approved != 1)
-        {
-            abort(404)
+        if($item->approved != 1) {
+            abort(404);
         }
 
         $recommended = Item::where(['type' => $item->type, 'onsale' => true])->inRandomOrder()->limit(6)->get();

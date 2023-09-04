@@ -49,8 +49,12 @@ class CatalogController extends Controller
 
     public function item_thumbnail(Request $request, $id)
     {
-        Item::findOrFail($id);
+        $item = Item::findOrFail($id);
         $thumbnail = Thumbnail::resolve('item', $id);
+
+        if($item->approved == 2) {
+            return redirect(Thumbnail::static_image('disapproved.png'));
+        }
 
         $url = match ($thumbnail['status'])
         {
@@ -607,10 +611,6 @@ class CatalogController extends Controller
                 return redirect($item->thumbnail_url);
             }
         }
-
-        $path = ($item->approved == 1) ?
-        ('items/' . $id . '_thumbnail.png') :   // item thumbnail if it's approved
-        'items/asset-notapproved.png';          // not approved image otherwise
         
         $response = Response::make(Storage::disk('public')
         ->get($path, 200))

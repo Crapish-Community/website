@@ -190,7 +190,7 @@
             request.done(function(response) {
                 wearingItemCard.html(response);
                 wearingItemCard.fadeIn();
-                tadah.loadThumbnails()
+                tadah.loadThumbnails(item-thumbnail)
         })
         }
         

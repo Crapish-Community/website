@@ -251,6 +251,7 @@
                 $(this).addClass("disabled");
                 $(this).removeClass('active');
             })
+            $(this).addClass('active');
             page = 1;
             getItems($(this).text());
         });

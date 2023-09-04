@@ -12,7 +12,7 @@
 @section('content')
 <main class="landing-page vw-100 vh-100 justify-content-center align-items-center d-flex">
     <div class="container-fluid text-center">
-        <iframe width="25%" height="20%" src="https://www.youtube-nocookie.com/embed/g9znsWIdu6M?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="25%" height="25%" src="https://www.youtube-nocookie.com/embed/g9znsWIdu6M?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <p>
         <a href="{{ route('login') }}" class="btn btn-secondary btn-lg shadow-lg mr-3"><i class="fas fa-sign-in-alt mr-1"></i>Login</a>
         <a href="{{ route('register') }}" class="btn btn-primary btn-lg shadow-lg"><i class="fas fa-user-plus mr-1"></i>Sign Up</a>

@@ -64,6 +64,7 @@
 				<li><a href="{{ route('admin.forceunlinkdiscord') }}">Force Unlink Discord</a></li>
 				@if (config('app.die_mauer')) <li><a href="{{ route('admin.scribbler') }}">Toggle Scribbler</a></li> @endif
 				<li><a href="{{ route('admin.hoster') }}">Toggle Verified Hoster</a></li>
+				<li><a href="{{ route('admin.moderator') }}">Toggle Moderator</a></li>
 			</div>
 			
 			<div class="col-sm-3 my-2">

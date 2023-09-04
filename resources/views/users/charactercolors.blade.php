@@ -246,7 +246,6 @@
 
         $('a.nav-link#category-link').click(function() {
             $('a.nav-link#category-link').each(function(index) {
-                $(this).addClass("disabled");
                 $(this).removeClass('active');
             })
             $(this).addClass('active');

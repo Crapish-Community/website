@@ -135,7 +135,8 @@ class CatalogController extends Controller
     {
         $item = Item::findOrFail($id);
 
-        if($item->approved != 1) {
+        if($item->approved != 1)
+        {
             abort(404)
         }
 

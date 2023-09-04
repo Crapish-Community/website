@@ -112,8 +112,8 @@ function reviewAudio(id, username)
 	const modal = document.getElementById('review-modal');
 	const reviewModal = new bootstrap.Modal(modal, {});
 	modal.getElementsByTagName('audio')[0].src = (window.location.origin + `/asset?id=${id}`);
-	document.getElementById('modal-moderate-user').href = (window.location.origin + `/admin/ban?username=${username}`);
-	document.getElementById('modal-asset-form').action = (window.location.origin + `/admin/${id}/approve`);
+	document.getElementById('modal-moderate-user').href = (window.location.origin + `/staff/ban?username=${username}`);
+	document.getElementById('modal-asset-form').action = (window.location.origin + `/staff/${id}/approve`);
 	reviewModal.show();
 }
 </script>

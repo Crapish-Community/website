@@ -26,12 +26,7 @@ class CdnController extends Controller
 
         try
         {
-            if($request->user()->admin != 0) {
-                $resolved = Render::resolve($request->input('type'), $request->input('id'), $threeDee, true);
-            }
-            else {
-                $resolved = Render::resolve($request->input('type'), $request->input('id'), $threeDee, false);
-            }
+            $resolved = Render::resolve($request->input('type'), $request->input('id'), $threeDee, true);
         }
         catch (Exception)
         {

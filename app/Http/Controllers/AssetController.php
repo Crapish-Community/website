@@ -72,6 +72,11 @@ class AssetController extends Controller
                         abort(404);
                     }
                 }
+                else {
+                    $response = Response::make(Storage::disk('public')->get('items/' . $item->id), 200);
+                    $response->header('Content-Type', 'application/octet-stream');
+                    return $response;
+                }
             }
 
             $response = Response::make(Storage::disk('public')->get('items/' . $item->id), 200);

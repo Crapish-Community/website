@@ -176,8 +176,6 @@
             $("#rightleg").click(function() {
                 bodyPart = "rightleg";
             });
-
-            regenButton.click(function(evt){regenThumbnail(evt)});
         }
 
         function getWornItems() {

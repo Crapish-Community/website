@@ -486,6 +486,10 @@ class AdminController extends Controller
             return redirect(route('admin.moderator'))->with('error', 'That user does not exist. Name: ' . $request['username']);
         }
 
+        if ($user->admin == 1) {
+            return redirect(route('admin.moderator'))->with('error', 'That user is an admin. Name: ' . $request['username']);
+        }
+
         if($user->admin == 0) {
             $user->admin = 2;
         }

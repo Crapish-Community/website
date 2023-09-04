@@ -46,11 +46,13 @@ class Render
 
     public static function resolve($type, $id, $threeDee = false, $overrideUrl = null) : string|array
     {
-        $item = Item::findOrFail($id);
+        if ($item->type == "Image" || $item->type == "T-Shirt" || $item->type == "Shirt" || $item->type == "Pants") {
+            $item = Item::findOrFail($id);
 
-        if($item) {
-            if($item->approved != 1)
-                abort(404);
+            if($item) {
+                if($item->approved != 1)
+                    abort(404);
+            }
         }
 
         $type .= 's';

@@ -469,6 +469,35 @@ class AdminController extends Controller
         return view('admin.banlist')->with(['bans' => $bans->orderBy('updated_at', 'DESC')->paginate(10)->appends($request->all())]);
     }
 
+    public function moderator(Request $request)
+    {
+        return view('admin.moderator');
+    }
+
+    public function togglemoderator(Request $request)
+    {
+        $request->validate([
+            'username' => ['required', 'string']
+        ]);
+
+        $user = User::where('username', $request['username'])->first();
+
+        if (!$user) {
+            return redirect(route('admin.moderator'))->with('error', 'That user does not exist. Name: ' . $request['username']);
+        }
+
+        $user->moderator = !$user->moderator;
+        $user->save();
+
+        AdminLog::log($request->user(), sprintf('Toggled Moderator status for user %s. (USER ID: %s)', $user->username, $user->id));
+
+        if ($user->moderator) {
+            return redirect(route('admin.moderator'))->with('success', $user->username . ' is now a Moderator!');
+        } else {
+            return redirect(route('admin.moderator'))->with('success', $user->username . ' is no longer a Moderator.');
+        }
+    }
+
     public function booster(Request $request)
     {
         return view('admin.booster');

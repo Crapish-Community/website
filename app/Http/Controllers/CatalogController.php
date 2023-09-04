@@ -49,12 +49,8 @@ class CatalogController extends Controller
 
     public function item_thumbnail(Request $request, $id)
     {
-        $item = Item::findOrFail($id);
+        Item::findOrFail($id);
         $thumbnail = Thumbnail::resolve('item', $id);
-
-        if($item->approved == 2) {
-            return redirect(Thumbnail::static_image('disapproved.png'));
-        }
 
         $url = match ($thumbnail['status'])
         {
@@ -138,6 +134,11 @@ class CatalogController extends Controller
     public function item(Request $request, $id)
     {
         $item = Item::findOrFail($id);
+
+        if($item->approved != 1) {
+            abort(404)
+        }
+
         $recommended = Item::where(['type' => $item->type, 'onsale' => true])->inRandomOrder()->limit(6)->get();
         $comments = ItemComment::where(['item_id' => $item->id])->orderBy('created_at', 'desc')->get();
 		$resellers = Reseller::where(['item_id' => $item->id])->orderBy('price', 'asc')->get();

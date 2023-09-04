@@ -245,6 +245,7 @@
         }
 
         $('a.nav-link#category-link').click(function() {
+            // jquery isnt doing it for some reason so...
             [].forEach.call(document.querySelectorAll('#category-link'), function (el) {
                 el.classList.remove('active');
             });

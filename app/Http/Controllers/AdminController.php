@@ -560,7 +560,7 @@ class AdminController extends Controller
         $user->verified_hoster = !$user->verified_hoster;
         $user->save();
 
-        AdminLog::log($request->user(), sprintf('Toggled Verified Hoster status for user %s. (USER ID: %s)', $user->username, $user->id));
+        AdminLog::log($request->user(), sprintf('Toggled Verified Hoster status for user %s. (USER ID: %s)', $user->username, $user->id), true);
 
         if ($user->verified_hoster) {
             return redirect(route('admin.hoster'))->with('success', $user->username . ' is now a Verified Hoster!');

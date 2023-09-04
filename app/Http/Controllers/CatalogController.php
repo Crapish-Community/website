@@ -30,7 +30,7 @@ class CatalogController extends Controller
     const CATEGORIES = ['hats', 'shirts', 'pants', 'tshirts', 'images', 'faces', 'gears', 'heads', 'packages', 'audio', 'meshes', 'models'];
     const BASE_CATEGORIES = ['hats', 'shirts', 'pants', 'tshirts', 'images', 'faces', 'gears', 'heads', 'packages', 'audio', 'meshes', 'models'];
     const UPLOAD_CATEGORIES = ['t-shirt', 'shirt', 'pants', 'image', 'mesh', 'face', 'audio', 'model']; // For the asset upload rule, which allows uploading of specific types.
-    const TEMPLATE_CATEGORIES = ['shirt', 'pants']; // items that have a template
+    const TEMPLATE_CATEGORIES = ['shirt', 'pants', 'images', 'tshirts']; // items that have a template
 
     public function __construct()
     {

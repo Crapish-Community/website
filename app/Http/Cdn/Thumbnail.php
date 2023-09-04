@@ -62,7 +62,7 @@ class Thumbnail
         elseif ($type == 'item')
         {
             // we need renders of unapproved assets for moderation...
-            if(!$asset->approved && !$returnUnapproved)
+            if(!$asset->approved && !$returnUnapproved && $request->user()->admin != 0)
             {
                 return [ 'status' => 3 ];
             }

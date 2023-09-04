@@ -486,12 +486,18 @@ class AdminController extends Controller
             return redirect(route('admin.moderator'))->with('error', 'That user does not exist. Name: ' . $request['username']);
         }
 
-        $user->moderator = !$user->moderator;
+        if($user->admin == 0) {
+            $user->admin = 2;
+        }
+        else {
+            $user->admin = 0;
+        }
+
         $user->save();
 
         AdminLog::log($request->user(), sprintf('Toggled Moderator status for user %s. (USER ID: %s)', $user->username, $user->id));
 
-        if ($user->moderator) {
+        if ($user->admin == 2) {
             return redirect(route('admin.moderator'))->with('success', $user->username . ' is now a Moderator!');
         } else {
             return redirect(route('admin.moderator'))->with('success', $user->username . ' is no longer a Moderator.');

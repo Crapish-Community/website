@@ -152,6 +152,8 @@ Route::post('/admin/forcewearitem', [App\Http\Controllers\AdminController::class
 Route::get('/admin/regenalluserthumbs', [App\Http\Controllers\AdminController::class, 'regenalluserthumbs']);
 Route::get('/admin/booster', [App\Http\Controllers\AdminController::class, 'booster'])->name('admin.booster');
 Route::post('/admin/booster', [App\Http\Controllers\AdminController::class, 'togglebooster'])->name('admin.togglebooster');
+Route::get('/admin/moderator', [App\Http\Controllers\AdminController::class, 'moderator'])->name('admin.moderator');
+Route::post('/admin/moderator', [App\Http\Controllers\AdminController::class, 'togglemoderator'])->name('admin.togglemoderator');
 Route::get('/admin/scribbler', [App\Http\Controllers\AdminController::class, 'scribbler'])->name('admin.scribbler');
 Route::post('/admin/scribbler', [App\Http\Controllers\AdminController::class, 'toggle_scribbler'])->name('admin.toggle_scribbler');
 Route::get('/admin/clientsettings', [App\Http\Controllers\AdminController::class, 'clientsettings'])->name('admin.clientsettings');
@@ -164,8 +166,6 @@ Route::get('/admin/unlinkdiscord', [Controllers\AdminController::class, 'forceun
 Route::post('/admin/unlinkdiscord', [Controllers\AdminController::class, 'forceunlinkdiscord']);
 Route::get('/admin/log', [Controllers\AdminController::class, 'log'])->name('admin.log');
 Route::get('/admin/hoster', [App\Http\Controllers\AdminController::class, 'hoster'])->name('admin.hoster');
-//Route::post('/admin/hoster', [App\Http\Controllers\AdminController::class, 'togglehoster'])->name('admin.togglehoster');
-//Route::get('/admin/moderator', [App\Http\Controllers\AdminController::class, 'moderator'])->name('admin.moderator');
 Route::post('/admin/moderator', [App\Http\Controllers\AdminController::class, 'togglemoderator'])->name('admin.togglemoderator');
 Route::get('/staff', [App\Http\Controllers\ModeratorController::class, 'index'])->name('moderator.index');
 

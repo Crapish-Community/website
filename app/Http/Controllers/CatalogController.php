@@ -577,7 +577,7 @@ class CatalogController extends Controller
             abort(403);
         }
 
-        if (!$request->user()->isAdmin()) {
+        if (!$request->user()->isStaff()) {
             abort(403);
         }
 

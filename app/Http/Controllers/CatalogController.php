@@ -607,6 +607,10 @@ class CatalogController extends Controller
                 return redirect($item->thumbnail_url);
             }
         }
+
+        $path = ($item->approved == 1) ?
+        ('items/' . $id . '_thumbnail.png') :   // item thumbnail if it's approved
+        'items/asset-notapproved.png';          // not approved image otherwise
         
         $response = Response::make(Storage::disk('public')
         ->get($path, 200))

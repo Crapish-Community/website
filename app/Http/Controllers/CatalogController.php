@@ -600,9 +600,20 @@ class CatalogController extends Controller
             $path = 'items/asset-audio.png';
         } else {
             if (Storage::disk('public')->exists('items/' . $item->id . '_thumbnail.png')) {
-                $path = ($item->approved == 1) ?
-                    ('items/' . $id . '_thumbnail.png') :   // item thumbnail if it's approved
-                    'items/asset-notapproved.png';          // not approved image otherwise
+                if($item->approved == 2) {
+                    $path = 'items/asset-notapproved.png';
+                }
+                else if($item->approved == 1) {
+                    $path = 'items/' . $id . '_thumbnail.png';
+                }
+                else if($item->approved == 0) {
+                    if($request->user()->admin == 1) {
+                        $path = 'items/' . $id . '_thumbnail.png';
+                    }
+                    else {
+                        $path = 'items/blank.png';
+                    }
+                }
             } elseif ($item->thumbnail_url) {
                 return redirect($item->thumbnail_url);
             }

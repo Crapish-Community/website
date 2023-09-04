@@ -245,9 +245,8 @@
         }
 
         $('a.nav-link#category-link').click(function() {
-            $('a.nav-link#category-link').each(function(index) {
-                $(this).removeClass('active');
-            })
+            $('#category-link').addClass("disabled");
+            $('#category-link').removeClass('active');
             $(this).addClass('active');
             page = 1;
             getItems($(this).text());

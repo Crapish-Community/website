@@ -246,12 +246,11 @@
             }
         }
 
-        $('a.nav-item#category-link').click(function() {
-            $('a.nav-item#category-link').each(function(index) {
+        $('a.nav-link#category-link').click(function() {
+            $('a.nav-link#category-link').each(function(index) {
                 $(this).addClass("disabled");
                 $(this).removeClass('active');
             })
-            $(this).addClass('active');
             page = 1;
             getItems($(this).text());
         });

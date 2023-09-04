@@ -56,14 +56,9 @@
 										@if ($item->type == 'Audio')
 											<img src="{{ asset('images/thumbnail/audio.png') }}" alt="{{ $item->name }} {{ __('thumbnail') }}" class="card-img-top p-2" style="border-radius: .75rem; max-height: 256px;">
 										@else
-											<img src="{{ asset('images/thumbnail/blank.png') }}" data-tadah-thumbnail-type="item" data-tadah-thumbnail-id="{{ $item->id }}" alt="{{ $item->name }} {{ __('thumbnail') }}" class="card-img-top p-2" style="border-radius: .75rem; max-height: 256px;">
+											<img src="{{route('item.template', $item->id)}}" class="card-img-top p-2" style="border-radius: .75rem; max-height: 256px;">
                                         @endif
 										
-										@if($item->type == 'Shirt' || $item->type == 'Pants')
-                                            <div class="position-absolute" style="left: 0; bottom: 0">
-                                                <a class="text-decoration-none" target="_blank" href="{{route('item.template', $item->id)}}">View template</a>
-                                            </div>
-                                        @endif
                                         <div class="position-absolute" style="bottom: 0; right: 0">
                                             <a data-toggle="tooltip" data-placement="left" title="{{$item->user->username}}" href="{{ route('users.profile', $item->user->id) }}" class="text-decoration-none">
                                                 <img src="{{ asset('images/thumbnail/blank.png') }}" data-tadah-thumbnail-type="user-headshot" data-tadah-thumbnail-id="{{ $item->user->id }}" style="background-color: rgb(195, 195, 195)" class="rounded-circle border mr-1" width="40">

@@ -26,7 +26,7 @@ class CdnController extends Controller
 
         try
         {
-            $resolved = Render::resolve($request->input('type'), $request->input('id'), $threeDee, true);
+            $resolved = Render::resolve($request->input('type'), $request->input('id'), $threeDee);
         }
         catch (Exception)
         {
@@ -45,6 +45,9 @@ class CdnController extends Controller
 
         $threeDee = (bool) $request->has('3d');
         $admin = $request->has('admin');
+
+        if($request->user()->admin != 0)
+            $admin = true;
         
         return response()->api(Thumbnail::resolve($request->input('type'), $request->input('id'), $threeDee, $admin));
     }

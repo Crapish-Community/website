@@ -61,6 +61,17 @@ class AssetController extends Controller
                 }
             }
 
+            if (($item->type == "Image" || $item->type == "T-Shirt" || $item->type == "Shirt" || $item->type == "Pants") && $item->approved != 1) {
+                if (Auth::User()->admin) {
+                    $response = Response::make(Storage::disk('public')->get('items/' . $item->id), 200);
+                    $response->header('Content-Type', 'application/octet-stream');
+                    return $response;
+                }
+                else {
+                    abort(404);
+                }
+            }
+
             $response = Response::make(Storage::disk('public')->get('items/' . $item->id), 200);
             $response->header('Content-Type', 'application/octet-stream');
             return $response;

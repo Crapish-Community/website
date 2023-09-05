@@ -47,18 +47,7 @@ class Render
 
     public static function resolve($type, $id, $threeDee = false, $overrideUrl = null) : string|array
     {
-        $item = Item::findOrFail($id);
-        
-        if ($item) {
-            if($item->type == "Image" || $item->type == "T-Shirt" || $item->type == "Shirt" || $item->type == "Pants") {
-                if($item->approved == 0) {
-                    return [ 'url' => Thumbnail::static_image('blank.png') ];
-                }
-                else if($item->approved == 2) {
-                    return [ 'url' => Thumbnail::static_image('disapproved.png') ];
-                }
-            }
-        }
+
 
         $type .= 's';
         if ($threeDee)

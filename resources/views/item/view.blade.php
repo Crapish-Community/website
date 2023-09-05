@@ -39,7 +39,7 @@
                     <h2>{{ $item->name }}</h2>
                     
                     <div id="thumbnail-container" class="my-2 position-relative d-flex justify-content-center">
-                        @if ($item->type != 'Model' && $item->type != 'Audio' && $item->type != 'T-Shirt' && $item->type != 'Face')
+                        @if ($item->type != 'Model' && $item->type != 'Audio' && $item->type != 'T-Shirt' && $item->type != 'Face' && $item->type != 'Image')
                         <button class="position-absolute btn btn-outline-secondary disabled" disabled id="toggle-item-3d" style="bottom:5; right:0;">3D</button>
                         @endif
 						<div class="position-relative text-center my-2" style="max-width:250px">

@@ -21,14 +21,6 @@ class AssetController extends Controller
             abort(404);
         }
 
-        if (Storage::disk('public')->exists('items/cores/' . $request->id)) {
-            $script = Storage::disk('public')->get('items/cores/' . $request->id, 200);
-            
-            $response = Response::make(ScriptSigner::instance()->sign($script, "new", $request->id));
-            $response->header('Content-Type', 'text/plain');
-            return $response;
-        }
-
         $item = Item::find($request->id);
 
         if (!$item) {

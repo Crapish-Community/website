@@ -692,7 +692,7 @@ class ClientController extends Controller
                     "%CHATTYPE%" => $token->server->chat_type,
                     "%PLACEID%" => $token->server->id,
                     '%CREATOR%' => $token->server->user->id,
-                    '%CORESCRIPT_PREFRENCE%' => 37801172,
+                    '%CORESCRIPT_PREFRENCE%' => 54,
                     '%SITE%' => request()->getHttpHost(),
                     '%GUEST%' => 'false'
                 ]
@@ -710,7 +710,7 @@ class ClientController extends Controller
                     "%CHATTYPE%" => $token->server->chat_type,
                     "%PLACEID%" => $token->server->id,
                     '%CREATOR%' => $token->server->user->id,
-                    '%CORESCRIPT_PREFRENCE%' => 37801172,
+                    '%CORESCRIPT_PREFRENCE%' => 54,
                     '%SITE%' => request()->getHttpHost(),
                     '%GUEST%' => 'true'
                 ]

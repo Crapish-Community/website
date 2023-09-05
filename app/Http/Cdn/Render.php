@@ -51,8 +51,12 @@ class Render
         
         if ($item->type == "Image" || $item->type == "T-Shirt" || $item->type == "Shirt" || $item->type == "Pants") {
             if($item) {
-                if($item->approved != 1)
-                    abort(403);
+                if($item->approved == 0) {
+                    return [ 'url' => Thumbnail::static_image('blank.png') ];
+                }
+                else if($item->approved == 2) {
+                    return [ 'url' => Thumbnail::static_image('disapproved.png') ];
+                }
             }
         }
 

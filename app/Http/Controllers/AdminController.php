@@ -265,7 +265,7 @@ class AdminController extends Controller
         ]);
 
         // BUGGY but lets check
-        if (config('app.discord_webhook_enabled') && $request->has('announce')) {
+        if (true) {
             // sanitize title/desc for basic all pings
             $name = str_replace('@here', '`@here`', str_replace('@everyone', '`@everyone`', $request['name']));
             $description = str_replace('@here', '`@here`', str_replace('@everyone', '`@everyone`', $request['description']));

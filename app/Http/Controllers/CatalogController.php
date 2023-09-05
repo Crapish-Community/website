@@ -378,9 +378,10 @@ class CatalogController extends Controller
                 abort(404);
             }
     
-            if (($user->id != $item->creator) || !$user->isAdmin())
+            if ($user->id != $item->creator)
             {
-                abort(404);
+                if(!$user->isAdmin())
+                    abort(404);
             }
     
             $request->validate([

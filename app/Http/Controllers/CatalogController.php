@@ -378,7 +378,7 @@ class CatalogController extends Controller
                 abort(404);
             }
     
-            if ($user->id != $item->creator && !$user->isAdmin())
+            if ($user->id != $item->creator)
             {
                 abort(404);
             }
@@ -464,7 +464,7 @@ class CatalogController extends Controller
             abort(404);
         }
 
-        if ($user->id != $item->creator && !$user->isAdmin()) {
+        if ($user->id != $item->creator) {
             abort(403);
         }
 

@@ -269,12 +269,12 @@ class AdminController extends Controller
             // sanitize title/desc for basic all pings
             $name = str_replace('@here', '`@here`', str_replace('@everyone', '`@everyone`', $request['name']));
             $description = str_replace('@here', '`@here`', str_replace('@everyone', '`@everyone`', $request['description']));
-            $response = Http::post(sprintf('https://discord.com/api/webhooks/%s/%s', config('app.discord_webhook_id'), config('app.discord_webhook_token')),[
+            Http::post(config('app.discord_webhook_url'),[
                 "content" => null,
                 "embeds" => [
                   [
-                    "title" => $item->name,
-                    "description" => $item->description,
+                    "title" => $name,
+                    "description" => $description,
                     "url" => url(route('item.view', $item->id)),
                     "color" => 4810239,
                     "author" => [

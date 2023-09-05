@@ -269,7 +269,7 @@ class AdminController extends Controller
             // sanitize title/desc for basic all pings
             $name = str_replace('@here', '`@here`', str_replace('@everyone', '`@everyone`', $request['name']));
             $description = str_replace('@here', '`@here`', str_replace('@everyone', '`@everyone`', $request['description']));
-            Http::post(config('app.discord_webhook_url'),[
+            $webhook = Http::post(config('app.discord_webhook_url'),[
                 "content" => null,
                 "embeds" => [
                   [
@@ -298,7 +298,7 @@ class AdminController extends Controller
 
         AdminLog::log($request->user(), sprintf('Created XML item %s. (ITEM ID: %s)', $item->name, $item->id));
 
-        return redirect(route('item.view', $item->id))->with('message', ($shouldHatch ? 'XML asset successfully created and scheduled to hatch.' : 'XML asset successfully created.'));
+        return $webhook->json();
     }
 
     public function robloxitemdata(Request $request, $id)

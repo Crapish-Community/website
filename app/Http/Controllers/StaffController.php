@@ -228,43 +228,40 @@ class StaffController extends Controller
         ]);
 
         // BUGGY but lets check
-        if (config('app.discord_webhook_enabled') && $request->has('announce')) {
+        if (true) {
             // sanitize title/desc for basic all pings
             $name = str_replace('@here', '`@here`', str_replace('@everyone', '`@everyone`', $request['name']));
             $description = str_replace('@here', '`@here`', str_replace('@everyone', '`@everyone`', $request['description']));
-            $response = Http::post(sprintf('https://discord.com/api/webhooks/%s/%s', config('app.discord_webhook_id'), config('app.discord_webhook_token')), [
-                'content' => '**New item:**',
-                'embeds' => [
-                    [
-                        'title' => $item->name,
-                        'description' => $item->description,
-                        'url' => url(route('item.view', $item->id)),
-                        'color' => 255,
-                        'timestamp' => date("Y-m-d\TH:i:s.u"),
-                        'thumbnail' => [ url(route('client.itemthumbnail', ['itemId' => $item->id], false) . sprintf('?tick=%d', time())) ],
-                        'footer' => [
-                            'text' => sprintf("%s %s", config('app.name'), $item->type)
-                        ],
-                        'author' => [
-                            'name' => $request->user()->username,
-                            'url' => url(route('users.profile', $request->user()->id)),
-                            'icon_url' => url(route('client.userthumbnail', ['userId' => $request->user()->id]), false) . sprintf('?tick=%d', time())
-                        ],
-                        'fields' => [
-                            [
-                                'name' => 'Price',
-                                'value' => sprintf('<:dahllor:1145276776117960734> %s %s', $item->price, config('app.currency_name_multiple')),
-                                'inline' => false
-                            ]
-                        ]
+            $webhook = Http::post(config('app.discord_webhook_url'),[
+                "content" => null,
+                "embeds" => [
+                  [
+                    "title" => $name,
+                    "description" => $description,
+                    "url" => url(route('item.view', $item->id)),
+                    "color" => 4810239,
+                    "author" => [
+                      "name" => $request->user()->username,
+                      "url" => url(route('users.profile', $request->user()->id)),
+                      "icon_url" => url(route('client.userthumbnail', ['userId' => $request->user()->id]), false) . sprintf('?tick=%d', time())
+                    ],
+                    "footer" => [
+                      "text" => "Crapish",
+                      "icon_url" => "https://crapish.fun/images/logos/small.png"
+                    ],
+                    "timestamp" => "2023-09-02T22:35:00.000Z",
+                    "thumbnail" => [
+                      "url" => url(route('client.itemthumbnail', ['itemId' => $item->id], false) . sprintf('?tick=%d', time()))
                     ]
-                ]
-            ]);
+                  ]
+                ],
+                "attachments" => []
+              ]);
         }
 
         AdminLog::log($request->user(), sprintf('Created XML item %s. (ITEM ID: %s)', $item->name, $item->id));
 
-        return redirect(route('item.view', $item->id))->with('message', ($shouldHatch ? 'XML asset successfully created and scheduled to hatch.' : 'XML asset successfully created.'));
+        return $webhook->json();
     }
 
     public function robloxitemdata(Request $request, $id)

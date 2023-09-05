@@ -126,7 +126,7 @@
                                 <div class="col-md-2">
                                     <div class="d-block d-md-inline-block">
                                         <span class="text-{{(Cache::has('last_online' . $reply->user->id) ? 'primary' : 'secondary')}} d-inline-block"><i style="font-size: 50%" class="fas fa-circle align-middle mr-1"></i></span>
-                                        <p class="m-0 d-inline-block"><a @if ($reply->user->isAdmin()) class="font-weight-bold text-danger" @endif @if ($post->user->isModerator()) class="font-weight-bold text-success" @endif href="{{ route('users.profile', $reply->user->id) }}">{{ $reply->user->username }}</a></p>
+                                        <p class="m-0 d-inline-block"><a @if ($reply->user->isAdmin()) class="font-weight-bold text-danger" @endif @if ($reply->user->isModerator()) class="font-weight-bold text-success" @endif href="{{ route('users.profile', $reply->user->id) }}">{{ $reply->user->username }}</a></p>
                                     </div>
                                     <br>
                                     <img class="img-fluid" style="max-height: 128px;" data-tadah-thumbnail-id="{{ $reply->user->id }}" data-tadah-thumbnail-type="user-thumbnail" src="{{ asset('images/thumbnail/blank.png') }}" alt="{{ $reply->user->username }}">

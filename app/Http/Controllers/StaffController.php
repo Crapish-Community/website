@@ -249,7 +249,7 @@ class StaffController extends Controller
                       "text" => "Crapish",
                       "icon_url" => "https://crapish.fun/images/logos/small.png"
                     ],
-                    "timestamp" => "2023-09-02T22:35:00.000Z",
+                    "timestamp" => date(DATE_ATOM, time()),
                     "thumbnail" => [
                       "url" => url(route('client.itemthumbnail', ['itemId' => $item->id], false) . sprintf('?tick=%d', time()))
                     ]
@@ -261,7 +261,7 @@ class StaffController extends Controller
 
         AdminLog::log($request->user(), sprintf('Created XML item %s. (ITEM ID: %s)', $item->name, $item->id));
 
-        return $webhook->json();
+        return redirect(route('item.view', $item->id))->with('message', ($shouldHatch ? 'XML asset successfully created and scheduled to hatch.' : 'XML asset successfully created.'));
     }
 
     public function robloxitemdata(Request $request, $id)

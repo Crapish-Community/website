@@ -52,7 +52,7 @@ class Render
         if ($item->type == "Image" || $item->type == "T-Shirt" || $item->type == "Shirt" || $item->type == "Pants") {
             if($item) {
                 if($item->approved != 1)
-                    abort(404);
+                    abort(403);
             }
         }
 

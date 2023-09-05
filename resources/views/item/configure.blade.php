@@ -55,7 +55,7 @@
                             </div>
                         </div>
 
-                        @if ($item->isXmlAsset() && Auth::user()->isAdmin())
+                        @if ($item->isXmlAsset() && Auth::user()->isStaff())
                         <div class="form-group row">
                             <label for="thumbnailurl" class="col-md-4 col-form-label text-md-right">{{ __('Thumbnail URL') }}</label>
 
@@ -72,7 +72,7 @@
                         @endif
 
                         @if ($item->isXmlAsset() || $item->type == "Lua")
-                            @if (Auth::user()->isAdmin())
+                            @if (Auth::user()->isStaff())
                             <div class="form-group row">
                                 <label for="xml" class="col-md-4 col-form-label text-md-right">{{ __('XML Data') }}</label>
 
@@ -89,7 +89,7 @@
                             @endif
                         @endif
 						
-						@if (Auth::user()->isAdmin())
+						@if (Auth::user()->isStaff())
 							
 						<div class="form-group row">
 							<div class="col-md-6 offset-md-4">
@@ -170,7 +170,7 @@
                             </div>
                         </div>
 						
-						@if (Auth::user()->isAdmin())
+						@if (Auth::user()->isStaff())
 							<div class="form-group row">
                             <label for="price" class="col-md-4 col-form-label text-md-right">
 								{{ __('Original Price') }}

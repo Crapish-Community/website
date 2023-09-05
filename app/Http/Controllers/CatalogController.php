@@ -378,7 +378,7 @@ class CatalogController extends Controller
                 abort(404);
             }
     
-            if ($user->id != $item->creator)
+            if (($user->id != $item->creator) || !$user->isAdmin())
             {
                 abort(404);
             }
@@ -400,7 +400,7 @@ class CatalogController extends Controller
             $item->price = $request['price'];
             $item->onsale = $request->has('onsale');
 			
-			if($user->isAdmin())
+			if($user->isStaff())
 			{
 				if ($item->isXmlAsset())
 				{
@@ -464,7 +464,7 @@ class CatalogController extends Controller
             abort(404);
         }
 
-        if ($user->id != $item->creator) {
+        if (($user->id != $item->creator) || !$user->isAdmin()) {
             abort(403);
         }
 

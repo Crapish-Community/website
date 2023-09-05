@@ -51,158 +51,6 @@ class AdminController extends Controller
 
         return redirect('/admin')->with('message', 'Cleared all Servers from the database.');
     }
-
-    public function invitekeys(Request $request) {
-        $invitekeys = InviteKey::query();
-
-        return view('admin.invitekeys')->with('invitekeys', $invitekeys->orderBy('created_at', 'DESC')->paginate(10)->appends($request->all()));
-    }
-
-    public function viewkey(Request $request, $token)
-    {
-        
-    }
-
-    public function createinvitekey(Request $request) {
-        return view('admin.createinvitekey');
-    }
-
-    public function generateinvitekey(Request $request) {
-        if($request->user()->admin == 2) {
-            $request->validate([
-                'uses' => ['required', 'min:1', 'max:10', 'integer']
-            ]);
-        }
-        else if($request->user()->admin == 1) {
-            $request->validate([
-                'uses' => ['required', 'min:1', 'max:15', 'integer']
-            ]);
-        }
-
-        $inviteKey = InviteKey::create([
-            'creator' => $request->user()->id,
-            'token' => sprintf('%sKey-%s', config('app.name'), Str::random(25)),
-            'uses' => $request['uses']
-        ]);
-
-        AdminLog::log($request->user(), sprintf('Created invite key %s with %s uses.', $inviteKey->token, $inviteKey->uses));
-
-        return redirect('/admin/createinvitekey')->with('success', 'Created invite key. Key: "' . $inviteKey->token  . '"');
-    }
-
-    public function disableinvitekey(Request $request, $id) {
-        $invitekey = InviteKey::find($id);
-
-        if (!$invitekey) {
-            return abort(404);
-        }
-
-        $invitekey->uses = 0;
-        $invitekey->save();
-
-        AdminLog::log($request->user(), sprintf('Disabled invite key %s.', $invitekey->token));
-
-        return redirect('/admin/invitekeys')->with('message', 'Invite key ID: ' . $invitekey->id . ', Token: ' . $invitekey->token . ' disabled.');
-    }
-
-    public function ban(Request $request) {        
-        return view('admin.ban');
-    }
-
-    public function banuser(Request $request) {
-        $request->validate([
-            'username' => ['required', 'string'],
-            'banreason' => ['required', 'max:2000'],
-            'unbandate' => ['required', 'date']
-        ]);
-
-        $user = User::where('username', $request['username'])->first();
-
-        if($user) {
-            $checkforban = Ban::where(['user_id' => $user->id, 'banned' => true])->first();
-        }
-
-        if (!$user) {
-            return redirect('/admin/ban')->with('error', 'That user does not exist. Name: ' . $request['username']);
-        }
-
-        if ($checkforban) {
-            return redirect('/admin/ban')->with('error', 'That user is already banned. Reason: ' . $user->ban_reason);
-        }
-
-        if ($user->isAdmin()) {
-            return redirect('/admin/ban')->with('error', 'If you do not like another admin, you should probably bring it up.');
-        }
-
-        if ($request->user()->id == $user->id) {
-            return redirect('/admin/ban')->with('error', 'You\'re trying to ban yourself?');
-        }
-
-        $ban = new Ban;
-        $ban->user_id = $user->id;
-        $ban->banned = true;
-        $ban->ban_reason = $request['banreason'];
-        $ban->banned_until = Carbon::parse($request['unbandate']);
-        $ban->save();
-
-        AdminLog::log($request->user(), sprintf('Banned user %s. (USER ID: %s)', $ban->user->username, $ban->user->id));
-
-        return redirect('/admin/ban')->with('success', $user->username . '  has been banned until ' . $ban->banned_until);
-    }
-
-    public function unban(Request $request) {
-        return view('admin.unban');
-    }
-
-    public function unbanuser(Request $request) {
-        $request->validate([
-            'username' => ['required', 'string']
-        ]);
-
-        $user = User::where('username', $request['username'])->first();
-        $ban = Ban::where(['user_id' => $user->id, 'banned' => true])->first();
-
-        if (!$user) {
-            return redirect('/admin/unban')->with('error', 'That user does not exist. Name: ' . $request['username']);
-        }
-
-        if (!$ban) {
-            return redirect('/admin/unban')->with('error', 'That user is not banned.');
-        }
-
-        if ($request->user()->id == $user->id) {
-            return redirect('/admin/unban')->with('error', 'but... but... but... you are not banned......');
-        }
-
-        $ban->banned = false;
-        $ban->pardon_user_id = $request->user()->id;
-        $ban->save();
-
-        AdminLog::log($request->user(), sprintf('Unbanned user %s. (USER ID: %s)', $ban->user->username, $ban->user->id));
-
-        return redirect('/admin/unban')->with('success', $user->username . '  has been unbanned.');
-    }
-
-    public function xmlitem(Request $request)
-    {
-        return view('admin.newxmlitem');
-    }
-    
-    public function robloxitemdata(Request $request, $id)
-    {
-        $response = Http::asForm()->get('https://api.roblox.com/marketplace/productinfo', [
-            "assetId" => $id
-        ]);
-
-        return $response;
-    }
-
-    public function robloxxmldata(Request $request, $id, $version)
-    {
-        $response = Http::get('https://assetdelivery.roblox.com/v1/asset?id=' . intval($id) . "&version=" . intval($version));
-
-        return $response;
-    }
     
     public function regenalluserthumbs(Request $request)
     {
@@ -339,18 +187,6 @@ class AdminController extends Controller
         AdminLog::log($request->user(), sprintf('Rewarded user %s with item "%s". (USER ID: %s) (ITEM ID: %s)', $user->username, $item->name, $user->id, $item->id), true);
 
         return redirect(route('admin.item'))->with('success', $user->username . '  has been given: ' . $item->name);
-    }
-
-    public function banlist(Request $request)
-    {
-        $bans = Ban::query();
-        if (request('search')) {
-            $users = User::where('username', 'LIKE', '%' . request('search') . '%')->get();
-            if($users) {
-                $bans->whereIn('user_id', $users->pluck('id'))->orderBy('updated_at', 'desc');
-            }
-        }
-        return view('admin.banlist')->with(['bans' => $bans->orderBy('updated_at', 'DESC')->paginate(10)->appends($request->all())]);
     }
 
     public function moderator(Request $request)
@@ -580,30 +416,6 @@ class AdminController extends Controller
                 }
             }
         }
-    }
-
-    function assets(Request $request) {
-        $unapproved = Item::where('approved', 0);
-        if (request('search')) {
-            $unapproved->where('name', 'LIKE', '%' . request('search') . '%');
-        }
-        return view('admin.assets', ['items' => $unapproved->paginate(18)]);
-    }
-
-    function approve(Request $request, $id) {
-        $item = Item::find($id);        
-        if($item) {
-			$approved = ($request->submit === 'Approve');
-            $item->update([
-                'approved' => ($approved ? 1 : 2),
-            ]);
-
-            AdminLog::log($request->user(), sprintf('%s asset %s. (ITEM ID: %s)', ($approved ? 'Approved' : 'Denied'), $item->name, $item->id));
-        } else {
-            abort(404);
-        }
-
-        return back();
     }
 
     public function scribbler(Request $request)

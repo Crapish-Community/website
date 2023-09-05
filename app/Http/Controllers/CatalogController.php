@@ -464,8 +464,9 @@ class CatalogController extends Controller
             abort(404);
         }
 
-        if (($user->id != $item->creator) || !$user->isAdmin()) {
-            abort(403);
+        if ($user->id != $item->creator) {
+            if(!$user->isAdmin())
+                abort(403);
         }
 
         return view('item.configure')->with('item', $item);

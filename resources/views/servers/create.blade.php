@@ -189,7 +189,7 @@
                         <li>Then, make a tunnel by going to the tunnels tab and clicking add tunnel. For the tunnel type, select TCP + UDP.</li>
                         <li>The port count of the tunnel will be 1 and the local port should be left blank.</li>
                         <li>After creating the tunnel, you can go to downloads and download the playit program and run it. Make sure to authorise it with your account.</li>
-                        <li>You can then go back to Crapish. For the IP and port, we will go back to playit and copy the IPv4 ip and port from the configure page. Leave the loopback IP blank.</li>
+                        <li>You can then go back to Crapish. For the IP and port, we will go back to playit and copy the IPv4 ip and port from the tunnel configure page. Leave the loopback IP blank.</li>
                         <li>Lastly, go on your server page, scroll down and click host server. Make sure you have the <a href="/download">Crapish Launcher</a> installed!
                     </ul>
                     <p class="p-0 m-0 w-100 d-flex text-muted py-2">Then you should be good to go!</p>

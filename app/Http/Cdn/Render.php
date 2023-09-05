@@ -49,8 +49,8 @@ class Render
     {
         $item = Item::findOrFail($id);
         
-        if ($item->type == "Image" || $item->type == "T-Shirt" || $item->type == "Shirt" || $item->type == "Pants") {
-            if($item) {
+        if ($item) {
+            if($item->type == "Image" || $item->type == "T-Shirt" || $item->type == "Shirt" || $item->type == "Pants") {
                 if($item->approved == 0) {
                     return [ 'url' => Thumbnail::static_image('blank.png') ];
                 }

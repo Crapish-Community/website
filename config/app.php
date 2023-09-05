@@ -32,8 +32,7 @@ return [
     'assets_approved_by_default' => false,
 
     'discord_webhook_enabled' => true,
-    'discord_webhook_token' => env('DISCORD_WEBHOOK_TOKEN', ''),
-    'discord_webhook_id' => env('DISCORD_WEBHOOK_ID', ''),
+    'discord_webhook_url' => env('DISCORD_WEBHOOK_URL', ''),
 
     'discord_verification_required' => true,
 
